@@ -1,0 +1,3 @@
+RELEASE_PACKAGE=gitlab-ee
+RELEASE_VERSION=13.2.0-ee
+DOWNLOAD_URL=https://packages.gitlab.com/gitlab/gitlab-ee/packages/ubuntu/focal/gitlab-ee_13.2.0-ee.0_amd64.deb/download.deb
