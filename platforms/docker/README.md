@@ -11,7 +11,7 @@ Sourced from [omnibus-gitlab](https://gitlab.com/gitlab-org/omnibus-gitlab/-/tre
 
 ## Running the GitLab with containers
 
-1. Build the GitLab docker image: `docker build -t gitlab-custom-ee:latest .`
+1. Build the GitLab docker image: `sh ./build.sh`
 2. Run the image: `sh ./run.sh`
 3. Run the runner image: `sh ./run_runner.sh`
 4. Go to the GitLab admin panel, and fetch runner registartion details
