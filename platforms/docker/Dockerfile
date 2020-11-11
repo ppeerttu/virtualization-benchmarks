@@ -1,25 +1,6 @@
 # Original sourced from GitLab Omniubs: https://gitlab.com/gitlab-org/omnibus-gitlab/-/blob/master/docker/Dockerfile
 FROM ubuntu:20.04
 
-# apt-get update
-# apt-get install -y curl openssh-server ca-certificates tzdata
-# apt-get install -y postfix
-# curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash
-# EXTERNAL_URL="http://gitlab.example.com" apt-get install gitlab-ee
-
-# RUN apt-get update && apt-get install -y apt-utils curl openssh-server ca-certificates tzdata
-
-# RUN curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash
-
-# RUN  EXTERNAL_URL=http://localhost apt-get install gitlab-ee
-
-# EXPOSE 22 80 443
-
-# CMD [ "gitlab-ctl", "reconfigure" ]
-
-#FROM ubuntu:16.04
-# MAINTAINER GitLab Inc. <support@gitlab.com>
-
 SHELL ["/bin/sh", "-c"],
 
 # Default to supporting utf-8
