@@ -4,7 +4,7 @@
 
 GITLAB_URL="http://gitlab.custom.local"
 
-# GitLab
+# GitLab server
 sudo apt-get update
 sudo apt-get install -y curl openssh-server ca-certificates tzdata
 
