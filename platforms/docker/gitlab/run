@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 docker run --detach \
     --hostname gitlab.custom.local \

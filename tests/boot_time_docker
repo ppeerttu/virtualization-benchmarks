@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ITERATIONS=10
+
+launch_container() {
+    docker run --rm sysbench:latest /bin/bash
+}
+
+for ((i=1; i<=$ITERATIONS;i++)); do
+    time launch_container
+done
+
