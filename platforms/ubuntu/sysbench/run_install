@@ -1,1 +1,5 @@
 #!/bin/bash
+
+sudo apt update && apt -y install curl
+
+curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | bash && apt -y install sysbench
