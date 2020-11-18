@@ -8,11 +8,14 @@ default_ram=3934
 default_disk=30
 # Allocated CPUs to guest
 default_vcpu=4
+# Default console
+default_tty=tty1
 
 GUEST_NAME=${GUEST_NAME:-$default_guest}
 GUEST_RAM=${GUEST_RAM:-$default_ram}
 GUEST_DISK=${GUEST_DISK:-$default_disk}
 GUEST_VCPU=${GUEST_VCPU:-$default_vcpu}
+GUEST_TTY=${GUEST_TTY:-$default_tty}
 
 virt-install --name $GUEST_NAME \
     --ram=$GUEST_RAM \
@@ -22,4 +25,4 @@ virt-install --name $GUEST_NAME \
     --os-variant ubuntu20.04 \
     --graphics none \
     --location 'http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/' \
-    --extra-args "console=tty0 console=ttyS0,115200n8"
+    --extra-args "console=$GUEST_TTY"
