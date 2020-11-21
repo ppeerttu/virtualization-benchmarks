@@ -1,0 +1,13 @@
+#!/bin/bash
+
+HOST_NAME=vm1
+
+launch_vm() {
+    virsh start $HOST_NAME
+}
+
+ping_vm() {
+    until ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
+}
+
+launch_vm & time ping_vm

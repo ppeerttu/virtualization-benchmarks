@@ -1,0 +1,9 @@
+#!/bin/bash
+
+HOST_NAME=dogentu
+
+ping_host() {
+    until ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
+}
+
+time ping_host
