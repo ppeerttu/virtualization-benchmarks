@@ -1,6 +1,6 @@
 # Firecracker
 
-This document describes how the author set up [Firecracker](https://github.com/firecracker-microvm/firecracker). Instructions were sourced from [Getting Started Guide](https://github.com/firecracker-microvm/firecracker/blob/master/docs/getting-started.md).
+This document describes how the author set up [Firecracker](https://github.com/firecracker-microvm/firecracker). Instructions were sourced from [Getting Started Guide](https://github.com/firecracker-microvm/firecracker/blob/master/docs/getting-started.md) and [firectl Getting Started on AWS](https://github.com/firecracker-microvm/firectl#getting-started-on-aws) guide.
 
 KVM was [already installed](kvm.md) on the system.
 
@@ -18,6 +18,10 @@ $ uname -r
 # Grant read/write access
 $ sudo setfacl -m u:${USER}:rw /dev/kvm
 
+#################################
+# Install Firecrackerf
+#################################
+
 # Get latest Firecracker version
 $ latest=$(basename $(curl -fsSLI -o /dev/null -w  %{url_effective} https://github.com/firecracker-microvm/firecracker/releases/latest))
 $ echo $latest
@@ -33,6 +37,24 @@ $ curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download
 $ mv firecracker-${latest}-$(uname -m) firecracker
 # Make executable
 $ chmod +x firecracker
+# Add to $PATH
+$ sudo mv firecracker /usr/local/bin/firecracker
+
+#################################
+# Install firectl
+#################################
+
+# Download binary
+$ curl -Lo firectl https://firectl-release.s3.amazonaws.com/firectl-v0.1.0
+# Download SHA256 checksum
+$ curl -Lo firectl.sha256 https://firectl-release.s3.amazonaws.com/firectl-v0.1.0.sha256
+# Check the binary
+$ sha256sum -c firectl.sha256
+firectl: OK
+# Make binary executable
+$ chmod +x firectl
+# Add to $PATH
+$ sudo mv firectl /usr/local/bin/firectl
 
 # Download kernel and rootfs
 $ mkdir firecracker-guest
