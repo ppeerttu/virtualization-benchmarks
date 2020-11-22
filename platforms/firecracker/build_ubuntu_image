@@ -12,17 +12,19 @@ mntdir=/mnt/tmpdir
 rootfs_username=${USERNAME:-$default_username}
 rootfs_password=${PASSWORD:-$default_password}
 rootfs_tz=${TIMEZONE:-$default_tz}
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
 
 log_info() {
-    printf "%(%Y-%m-%d %H:%M:%S)T - INFO - $1\n"
+    printf "%(%Y-%m-%d %H:%M:%S)T - ${GREEN}INFO${NC} - $1\n"
 }
 
 # Create rootfs build directory
 mkdir -p $rootfs_dir
 
-log_info "Directory $rootfs_dir created"
+log_info "Directory $rootfs_dir created, moving in"
 
-pushd $rootfs_dir
+cd $rootfs_dir
 
 log_info "Downloading Ubuntu base"
 
@@ -36,7 +38,7 @@ sudo dd if=/dev/zero of=$rootfs_file bs=1024 count=1M
 sudo mkfs.ext4 -F -L linuxroot $rootfs_file
 
 log_info "Mounting and setting up the image"
-sudo mkdir $mntdir
+sudo mkdir -p $mntdir
 sudo mount -o loop $rootfs_file $mntdir
 
 # Unpack the downloaded Ubuntu base image
@@ -123,9 +125,8 @@ sudo umount $mntdir/sys
 sudo umount $mntdir/dev/pts
 sudo umount $mntdir/dev
 
-log_info "Unmounting done"
+log_info "Unmounting done. Moving out of $(pwd)"
 
-popd
 
 log_info "All set"
 
