@@ -1,6 +1,6 @@
 # Firecracker
 
-This document describes how the author set up [Firecracker](https://github.com/firecracker-microvm/firecracker). Instructions were sourced from [Getting Started Guide](https://github.com/firecracker-microvm/firecracker/blob/master/docs/getting-started.md) and [firectl Getting Started on AWS](https://github.com/firecracker-microvm/firectl#getting-started-on-aws) guide.
+This document describes how the author set up [Firecracker](https://github.com/firecracker-microvm/firecracker). Instructions were sourced from [Getting Started Guide](https://github.com/firecracker-microvm/firecracker/blob/master/docs/getting-started.md) and [firectl Getting Started on AWS](https://github.com/firecracker-microvm/firectl#getting-started-on-aws) guide. Networking is from [s8sg GitHub](https://gist.github.com/s8sg/1acbe50c0d2b9be304cf46fa1e832847).
 
 KVM was [already installed](kvm.md) on the system.
 
@@ -112,6 +112,68 @@ Sending the final kill signal
 [  279.674170] reboot: Restarting system
 [  279.675205] reboot: machine restart
 $
+
+#################################
+# Networking setup
+#################################
+
+# The br0 has been set up in KVM config
+
+# Create a tap device & link with bridge
+$ sudo ip tuntap add dev tap0 mode tap
+$ sudo brctl addif br0 tap0
+$ sudo ifconfig tap0 up
+# Get MAC
+$ ip a | grep -A1 tap0 | grep ether
+    link/ether 32:76:c6:d0:d6:bd brd ff:ff:ff:ff:ff:ff
+
+# Host
+$ ifconfig
+... br0 ...
+      ... inet 192.168.1.82  netmask 255.255.255.0 ...
+      ...
+# This is 192.168.1.82/24
+
+# Launch guest with new tap
+$ firectl --kernel=hello-vmlinux.bin --root-drive=hello-rootfs.ext4 --tap-device=tap0/32:76:c6:d0:d6:bd
+# Inside the guest
+$ ifconfig eth0 up \
+  && ip addr add dev eth0 192.168.1.83/16 \
+  && ip route add default via 192.168.1.82 \
+  && echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+
+
+
+# We're going to use the docker0 interface for Firecracker guests
+# by creating a new tap device and adding it to the bridge.
+
+# ifconfig eth0 up && ip addr add dev eth0 172.17.0.3/16 && ip route
+add default via 172.17.0.1 && echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+# Create a tap device & link with bridge
+$ sudo ip tuntap add dev tap0 mode tap
+$ sudo brctl addif br0 tap0
+$ sudo ifconfig tap0 up
+# Get MAC
+$ ip a | grep -A1 tap0 | grep ether
+    link/ether 32:76:c6:d0:d6:bd brd ff:ff:ff:ff:ff:ff
+
+# Host
+$ ifconfig
+... br0 ...
+      ... inet 192.168.1.82  netmask 255.255.255.0 ...
+      ...
+# This is 192.168.1.82/24
+
+# Launch guest with new tap
+$ firectl --kernel=hello-vmlinux.bin --root-drive=hello-rootfs.ext4 --tap-device=tap0/32:76:c6:d0:d6:bd
+# Inside the guest
+$ ifconfig eth0 up \
+  && ip addr add dev eth0 192.168.1.83/16 \
+  && ip route add default via 192.168.1.82 \
+  && echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 
 ```
 
