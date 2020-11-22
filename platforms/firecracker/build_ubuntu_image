@@ -11,7 +11,14 @@ rootfs_file=$rootfs.ext4
 mntdir=/mnt/tmpdir
 rootfs_username=${USERNAME:-$default_username}
 rootfs_password=${PASSWORD:-$default_password}
+rootfs_password_encrypted=$(openssl passwd -1 $rootfs_password)
 rootfs_tz=${TIMEZONE:-$default_tz}
+hostname=fvm
+hosts=$(cat <<EOF
+127.0.0.1   localhost
+127.0.0.1   $hostname
+EOF
+)
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
@@ -75,20 +82,18 @@ apt-get install -y \
     sudo \
     --no-install-recommends
 
+echo "${GREEN}INFO${NC} - Creating user $rootfs_username"
 
-useradd -m -p \$(openssl passwd -1 $rootfs_password) $rootfs_username
+useradd -m -p $rootfs_password_encrypted $rootfs_username
+
+echo "${GREEN}INFO${NC} - Adding user $rootfs_username to sudoers"
 
 usermod -aG sudo $rootfs_username
 
-hostname=fvm
-hosts=$(cat <<EOF
-127.0.0.1   localhost
-127.0.0.1   \$hostname
-EOF
-)
+echo "${GREEN}INFO${NC} - Setting up hosts for host $hostname"
 
-echo "\$hostname" > /etc/hostname
-echo "\$hosts" > /etc/hosts
+echo "$hostname" > /etc/hostname
+echo "$hosts" > /etc/hosts
 
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
