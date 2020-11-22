@@ -34,8 +34,8 @@ curl -LOJ http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-ba
 log_info "Allocating rootfs image"
 
 # Allocate rootfs image
-sudo dd if=/dev/zero of=$rootfs_file bs=1024 count=1M
-sudo mkfs.ext4 -F -L linuxroot $rootfs_file
+dd if=/dev/zero of=$rootfs_file bs=1024 count=1M
+mkfs.ext4 -F -L linuxroot $rootfs_file
 
 log_info "Mounting and setting up the image"
 sudo mkdir -p $mntdir
@@ -54,9 +54,8 @@ sudo mount -o bind /dev/pts $mntdir/dev/pts
 log_info "Going in the image..."
 
 # Run inside the image
-sudo chroot $mntdir /bin/bash <<"EOT"
+sudo chroot $mntdir /bin/bash <<EOT
 
-# Install packages
 apt-get update
 apt-get install -y \
     language-pack-en-base \
@@ -76,32 +75,25 @@ apt-get install -y \
     sudo \
     --no-install-recommends
 
-# Create user with home directory
-# useradd -m dogentu
 useradd -m -p $(openssl passwd -1 $rootfs_password) $rootfs_username
-# Add password for user
-# passwd dogentu
-# Add to sudoers
-usermod -aG sudo dogentu
-# Add root password
-# passwd
+
+usermod -aG sudo $rootfs_username
 
 hostname=fvm
 hosts=$(cat <<EOF
 127.0.0.1   localhost
-127.0.0.1   $hostname
+127.0.0.1   \$hostname
 EOF
 )
-# Setup hostname
-echo "$hostname" > /etc/hostname
-echo "$hosts" > /etc/hosts
 
-## Make X used by ‘anyuser’
+echo "\$hostname" > /etc/hostname
+echo "\$hosts" > /etc/hosts
+
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-# Configure timezone
-# dpkg-reconfigure tzdata
-cp "/usr/share/zoneinfo/$rootfs_tz" /etc/localtime
+cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+
+EOT
 
 # Set up group for alsa
 # vim /etc/group
@@ -115,8 +107,6 @@ cp "/usr/share/zoneinfo/$rootfs_tz" /etc/localtime
 # Exit at this point from chroot:
 # exit
 
-EOT
-
 log_info "Done. Unmounting..."
 
 # Unmount
@@ -127,6 +117,7 @@ sudo umount $mntdir/dev
 
 log_info "Unmounting done. Moving out of $(pwd)"
 
+cd -
 
 log_info "All set"
 
