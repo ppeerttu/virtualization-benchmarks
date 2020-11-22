@@ -75,28 +75,26 @@ apt-get install -y \
     sudo \
     --no-install-recommends
 
+
+useradd -m -p \$(openssl passwd -1 $rootfs_password) $rootfs_username
+
+usermod -aG sudo $rootfs_username
+
+hostname=fvm
+hosts=$(cat <<EOF
+127.0.0.1   localhost
+127.0.0.1   \$hostname
+EOF
+)
+
+echo "\$hostname" > /etc/hostname
+echo "\$hosts" > /etc/hosts
+
+echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+
+cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+
 EOT
-
-sudo chroot $mntdir
-
-# useradd -m -p $(openssl passwd -1 $rootfs_password) $rootfs_username
-
-# usermod -aG sudo $rootfs_username
-
-# hostname=fvm
-# hosts=$(cat <<EOF
-# 127.0.0.1   localhost
-# 127.0.0.1   $hostname
-# EOF
-# )
-
-# echo "\$hostname" > /etc/hostname
-# echo "\$hosts" > /etc/hosts
-
-# echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
-
-# cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
-
 
 # Set up group for alsa
 # vim /etc/group
@@ -117,6 +115,7 @@ sudo umount $mntdir/proc
 sudo umount $mntdir/sys
 sudo umount $mntdir/dev/pts
 sudo umount $mntdir/dev
+sudo umount $mntdir
 
 log_info "Unmounting done. Moving out of $(pwd)"
 
