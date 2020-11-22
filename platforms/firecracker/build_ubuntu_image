@@ -2,6 +2,8 @@
 
 set -e
 
+current_dir=$(pwd)
+provision_script=$current_dir/setup_os.sh
 default_username=perttu
 default_password=perttu
 default_tz="Europe/Helsinki"
@@ -58,48 +60,50 @@ sudo mount -t sysfs /sys $mntdir/sys
 sudo mount -o bind /dev $mntdir/dev
 sudo mount -o bind /dev/pts $mntdir/dev/pts
 
-log_info "Going in the image..."
+log_info "Running $provision_script in $mntdir..."
 
 # Run inside the image
-sudo chroot $mntdir /bin/bash <<EOT
+sudo chroot $mntdir /bin/bash $provision_script
 
-apt-get update
-apt-get install -y \
-    language-pack-en-base \
-    sudo \
-    ssh \
-    net-tools \
-    ethtool \
-    wireless-tools \
-    ifupdown \
-    network-manager \
-    iputils-ping \
-    rsyslog \
-    htop \
-    vim \
-    xinit xorg \
-    alsa-utils \
-    sudo \
-    --no-install-recommends
+# sudo chroot $mntdir /bin/bash <<EOT
 
-echo "${GREEN}INFO${NC} - Creating user $rootfs_username"
+# apt-get update
+# apt-get install -y \
+#     language-pack-en-base \
+#     sudo \
+#     ssh \
+#     net-tools \
+#     ethtool \
+#     wireless-tools \
+#     ifupdown \
+#     network-manager \
+#     iputils-ping \
+#     rsyslog \
+#     htop \
+#     vim \
+#     xinit xorg \
+#     alsa-utils \
+#     sudo \
+#     --no-install-recommends
 
-useradd -m -p $rootfs_password_encrypted $rootfs_username
+# echo "${GREEN}INFO${NC} - Creating user $rootfs_username"
 
-echo "${GREEN}INFO${NC} - Adding user $rootfs_username to sudoers"
+# useradd -m -p $rootfs_password_encrypted $rootfs_username
 
-usermod -aG sudo $rootfs_username
+# echo "${GREEN}INFO${NC} - Adding user $rootfs_username to sudoers"
 
-echo "${GREEN}INFO${NC} - Setting up hosts for host $hostname"
+# usermod -aG sudo $rootfs_username
 
-echo "$hostname" > /etc/hostname
-echo "$hosts" > /etc/hosts
+# echo "${GREEN}INFO${NC} - Setting up hosts for host $hostname"
 
-echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+# echo "$hostname" > /etc/hostname
+# echo "$hosts" > /etc/hosts
 
-cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+# echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-EOT
+# cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+
+# EOT
 
 # Set up group for alsa
 # vim /etc/group
