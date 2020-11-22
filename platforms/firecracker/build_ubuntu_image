@@ -3,6 +3,7 @@
 set -e
 
 current_dir=$(pwd)
+provision_script_name=setup_os.sh
 provision_script=$current_dir/setup_os.sh
 default_username=perttu
 default_password=perttu
@@ -11,12 +12,12 @@ rootfs=ubuntu-rootfs
 rootfs_dir=~/$rootfs
 rootfs_file=$rootfs.ext4
 mntdir=/mnt/tmpdir
-rootfs_username=${USERNAME:-$default_username}
+export rootfs_username=${USERNAME:-$default_username}
 rootfs_password=${PASSWORD:-$default_password}
-rootfs_password_encrypted=$(openssl passwd -1 $rootfs_password)
-rootfs_tz=${TIMEZONE:-$default_tz}
-hostname=fvm
-hosts=$(cat <<EOF
+export rootfs_password_encrypted=$(openssl passwd -1 $rootfs_password)
+export rootfs_tz=${TIMEZONE:-$default_tz}
+export hostname=fvm
+export hosts=$(cat <<EOF
 127.0.0.1   localhost
 127.0.0.1   $hostname
 EOF
@@ -59,11 +60,12 @@ sudo mount -t proc /proc $mntdir/proc
 sudo mount -t sysfs /sys $mntdir/sys
 sudo mount -o bind /dev $mntdir/dev
 sudo mount -o bind /dev/pts $mntdir/dev/pts
+sudo cp $provision_script $mntdir/
 
-log_info "Running $provision_script in $mntdir..."
+# log_info "Running $provision_script in $mntdir..."
 
 # Run inside the image
-sudo chroot $mntdir /bin/bash $provision_script
+sudo chroot $mntdir /bin/bash $provision_script_name
 
 # sudo chroot $mntdir /bin/bash <<EOT
 
@@ -86,15 +88,9 @@ sudo chroot $mntdir /bin/bash $provision_script
 #     sudo \
 #     --no-install-recommends
 
-# echo "${GREEN}INFO${NC} - Creating user $rootfs_username"
-
 # useradd -m -p $rootfs_password_encrypted $rootfs_username
 
-# echo "${GREEN}INFO${NC} - Adding user $rootfs_username to sudoers"
-
 # usermod -aG sudo $rootfs_username
-
-# echo "${GREEN}INFO${NC} - Setting up hosts for host $hostname"
 
 # echo "$hostname" > /etc/hostname
 # echo "$hosts" > /etc/hosts

@@ -4,8 +4,36 @@ set -ex
 
 dpkg -i /mnt/root/linux*.deb
 
-echo 'fvm' > /etc/hostname
-passwd -d root
+apt-get update
+apt-get install -y \
+    language-pack-en-base \
+    sudo \
+    ssh \
+    net-tools \
+    ethtool \
+    wireless-tools \
+    ifupdown \
+    network-manager \
+    iputils-ping \
+    rsyslog \
+    htop \
+    vim \
+    xinit xorg \
+    alsa-utils \
+    sudo \
+    --no-install-recommends
+
+useradd -m -p $rootfs_password_encrypted $rootfs_username
+
+usermod -aG sudo $rootfs_username
+
+echo "$hostname" > /etc/hostname
+echo "$hosts" > /etc/hosts
+
+echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+
+cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+
 mkdir /etc/systemd/system/serial-getty@ttyS0.service.d/
 cat <<EOF > /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
 [Service]
@@ -21,4 +49,5 @@ network:
     eth0:
       dhcp4: true
 EOF
+
 netplan generate
