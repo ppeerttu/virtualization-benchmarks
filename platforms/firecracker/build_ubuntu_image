@@ -71,12 +71,10 @@ hosts=$hosts
 rootfs_tz=$rootfs_tz
 EOF
 )
-sed -i.old "1s;^;;" $mntdir/$provision_script_name
-
-printf '%s\n%s\n' "$vars" "$(cat $mntdir/$provision_script_name)" >$mntdir/$provision_script_name
+sudo printf '%s\n%s\n' "$vars" "$(cat $mntdir/$provision_script_name)" >$mntdir/$provision_script_name
 
 log_info "The final provisioning script is:"
-cat $mntdir/$provision_script_name
+sudo cat $mntdir/$provision_script_name
 sleep 5
 
 # log_info "Running $provision_script in $mntdir..."
