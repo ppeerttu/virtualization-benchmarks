@@ -1,22 +1,13 @@
 #!/bin/bash
 
-set -e
-
-GVISOR=""
-
-if [ "$1" == "--gvisor" ]; then
-    GVISOR="gvisor-"
-fi
-
-
 ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}boot-time.log
+LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-fileio.log
 
 launch_container() {
-    docker run --rm sysbench:latest
+    docker run --rm sysbench:latest sysbench fileio run --file-test-mode=seqrewr
 }
 
 run_test() {
@@ -25,4 +16,4 @@ run_test() {
     done
 }
 
-run_test &> $LOGFILE_NAME
+run_test &> $LOG_FILE

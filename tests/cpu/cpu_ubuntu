@@ -1,10 +1,22 @@
 #!/bin/bash
 
+PLATFORMS=("--firecracker" "--vm" "--metal")
+
+if [[ ! " ${PLATFORMS[@]} " =~ " $1 " ]]; then
+    echo "Provided argument '$1' is not a valid platform. Please give one of ${PLATFORMS[@]}"
+    exit 1
+fi
+
+PLATFORM_ARG="$1"
+PLATFORM=${PLATFORM_ARG:2}
+
+echo "Selected platform: $PLATFORM"
+
 ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$1-cpu.log
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$PLATFORM-cpu.log
 
 run_test() {
     for ((i=1; i<=$ITERATIONS;i++)); do

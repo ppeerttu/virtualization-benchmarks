@@ -1,0 +1,44 @@
+#!/bin/bash
+
+ITERATIONS=10
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+OUTPUT_DIR=$DIR/output
+DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
+LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-fileio.log
+
+SSH_USER=perttu
+SSH_HOST=dogentu
+IPERF_PORT=5201
+CONTAINER_NAME=iperf3
+
+launch_container() {
+    # Launch container in the remote host
+    ssh $SSH_USER@$SSH_HOST /bin/bash <<EOF
+
+docker run -d --rm --name $CONTAINER_NAME iperf3:latest -p $IPERF_PORT:$IPERF_PORT
+
+EOF
+}
+
+stop_container() {
+    ssh $SSH_USER@$SSH_HOST /bin/bash <<EOF
+docker stop $CONTAINER_NAME
+EOF
+}
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        iperf3 -c remotehost -J	
+    done
+
+}
+
+printf "Launching the container..."
+launch_container
+printf "Container up. Running tests..."
+
+run_test &> $LOG_FILE
+
+printf "Tests finished. Cleaning up container..."
+stop_container
+printf "All done."

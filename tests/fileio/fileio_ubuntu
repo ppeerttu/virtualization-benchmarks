@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+PLATFORMS=("--firecracker" "--vm" "--metal")
+
+if [[ ! " ${PLATFORMS[@]} " =~ " $1 " ]]; then
+    printf "Provided argument '$1' is not a valid platform. Please give one of ${PLATFORMS[@]}"
+    exit 1
+fi
+
+PLATFORM_ARG="$1"
+PLATFORM=${PLATFORM_ARG:2}
+
+printf "Selected platform: $PLATFORM"
+
+ITERATIONS=10
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+OUTPUT_DIR=$DIR/output
+DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$PLATFORM-fileio.log
+TMPDIR=/tmp/fileio-test
+
+mkdir -p $TMPDIR
+pushd $TMPDIR
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        sysbench fileio run --file-test-mode=seqrewr
+    done
+}
+
+printf "\nPreparing sysbench test...\n"
+
+sleep 2
+
+sysbench fileio prepare
+
+printf "\nPreparations done. Running tests...\n"
+
+run_test &> $LOGFILE_NAME
+
+popd
+
+printf "\nTests done. Cleaning up...\n"
+
+rm -rf $TMPDIR
+
+printf "\nFinished.\n"
