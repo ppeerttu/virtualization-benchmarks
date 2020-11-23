@@ -50,7 +50,7 @@ dd if=/dev/zero of=$rootfs_file bs=1024 count=1M
 mkfs.ext4 -F -L linuxroot $rootfs_file
 
 log_info "Mounting and setting up the image"
-sudo mkdir -p $mntdir
+mkdir -p $mntdir
 sudo mount -o loop $rootfs_file $mntdir
 
 # Unpack the downloaded Ubuntu base image
@@ -71,7 +71,7 @@ hosts=$hosts
 rootfs_tz=$rootfs_tz
 EOF
 )
-sudo printf '%s\n%s\n' "$vars" "$(cat $mntdir/$provision_script_name)" >$mntdir/$provision_script_name
+printf '%s\n%s\n' "$vars" "$(cat $mntdir/$provision_script_name)" >$mntdir/$provision_script_name
 
 log_info "The final provisioning script is:"
 sudo cat $mntdir/$provision_script_name
