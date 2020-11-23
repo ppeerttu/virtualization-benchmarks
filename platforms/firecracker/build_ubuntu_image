@@ -4,12 +4,12 @@ set -e
 
 current_dir=$(pwd)
 provision_script_name=setup_os.sh
-provision_script=$current_dir/setup_os.sh
+provision_script=$current_dir/$provision_script_name
 default_username=perttu
 default_password=perttu
 default_tz="Europe/Helsinki"
 rootfs=ubuntu-rootfs
-rootfs_dir=~/$rootfs
+rootfs_dir=./$rootfs
 rootfs_file=$rootfs.ext4
 mntdir=/mnt/tmpdir
 export rootfs_username=${USERNAME:-$default_username}
@@ -29,8 +29,10 @@ log_info() {
     printf "%(%Y-%m-%d %H:%M:%S)T - ${GREEN}INFO${NC} - $1\n"
 }
 
-# Create rootfs build directory
-mkdir -p $rootfs_dir
+log_info "Re-creating directory $rootfs_dir"
+
+rm -rf $rootfs_dir
+mkdir $rootfs_dir
 
 log_info "Directory $rootfs_dir created, moving in"
 
@@ -60,7 +62,7 @@ sudo mount -t proc /proc $mntdir/proc
 sudo mount -t sysfs /sys $mntdir/sys
 sudo mount -o bind /dev $mntdir/dev
 sudo mount -o bind /dev/pts $mntdir/dev/pts
-sudo cp $provision_script $mntdir/
+sudo cp $provision_script $mntdir/$provision_script_name
 
 # log_info "Running $provision_script in $mntdir..."
 

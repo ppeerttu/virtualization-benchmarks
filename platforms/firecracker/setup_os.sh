@@ -2,8 +2,6 @@
 # Sourced from: https://github.com/bkleiner/ubuntu-firecracker/blob/master/script/provision.sh
 set -ex
 
-dpkg -i /mnt/root/linux*.deb
-
 apt-get update
 apt-get install -y \
     language-pack-en-base \
