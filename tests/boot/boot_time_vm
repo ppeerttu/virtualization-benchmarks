@@ -1,13 +1,38 @@
 #!/bin/bash
 
-HOST_NAME=vm1
+ITERATIONS=10
+VM_NAME=vm1
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+OUTPUT_DIR=$DIR/output
+DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-vm-boot-time.log
 
 launch_vm() {
-    virsh start $HOST_NAME
+    virsh start $VM_NAME
+}
+
+destroy_vm() {
+    virsh destroy $VM_NAME
 }
 
 ping_vm() {
-    until ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
+    until ping -c1 $VM_NAME >/dev/null 2>&1; do :; done
 }
 
-launch_vm & time ping_vm
+run_iteration() {
+    launch_vm & time ping_vm
+    # Sleep in between just in case
+    sleep 5
+    destroy_vm
+    # Sleep in between just in case
+    sleep 5
+}
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        run_iteration
+    done
+}
+
+run_test &> $LOGFILE_NAME
+

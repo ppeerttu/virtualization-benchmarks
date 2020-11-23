@@ -1,9 +1,44 @@
 #!/bin/bash
 
+set -e
+
+ITERATIONS=2
 HOST_NAME=dogentu
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+OUTPUT_DIR=$DIR/output
+DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-metal-boot-time.log
 
 ping_host() {
     until ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
 }
 
-time ping_host
+wait_until_shutdown_input() {
+    read -p "Please turn off the power and press any letter to start next iteration. " -n 1 -r
+    echo
+}
+
+wait_until_poweron_input() {
+    read -p "Please press any letter at the same time you turn the power on. " -n 1 -r
+    echo
+}
+
+run_iteration() {
+    wait_until_poweron_input
+    time ping_host >> $LOGFILE_NAME 2>&1
+
+    sleep 2
+
+    wait_until_shutdown_input
+}
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        run_iteration
+    done
+}
+
+
+run_test
+
+

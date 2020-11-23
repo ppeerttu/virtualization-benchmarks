@@ -4,17 +4,15 @@ ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-boot-time.log
 
 launch_container() {
-    docker run --rm -d sysbench:latest /bin/bash
+    docker run --rm sysbench:latest
 }
 
 run_test() {
     for ((i=1; i<=$ITERATIONS;i++)); do
-        time launch_container
+        launch_container
     done
 }
 
-run_test &> $LOGFILE_NAME
-
+run_test &> $OUTPUT_DIR/$DATETIME-docker-cpu.log
