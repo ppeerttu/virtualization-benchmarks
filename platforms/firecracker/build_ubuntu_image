@@ -63,6 +63,21 @@ sudo mount -t sysfs /sys $mntdir/sys
 sudo mount -o bind /dev $mntdir/dev
 sudo mount -o bind /dev/pts $mntdir/dev/pts
 sudo cp $provision_script $mntdir/$provision_script_name
+vars=$(cat <<EOF
+rootfs_password_encrypted=$rootfs_password_encrypted
+rootfs_username=$rootfs_password_encrypted
+hostname=$hostname
+hosts=$hosts
+rootfs_tz=$rootfs_tz
+EOF
+)
+sed -i.old "1s;^;;" $mntdir/$provision_script_name
+
+printf '%s\n%s\n' "$vars" "$(cat $mntdir/$provision_script_name)" >$mntdir/$provision_script_name
+
+log_info "The final provisioning script is:"
+cat $mntdir/$provision_script_name
+sleep 5
 
 # log_info "Running $provision_script in $mntdir..."
 

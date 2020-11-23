@@ -1,44 +1,59 @@
 #!/bin/bash
 
+set -e
+
+GVISOR=""
+
+if [ "$1" == "--gvisor" ]; then
+    GVISOR="gvisor-"
+fi
+
+
 ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-fileio.log
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}bandwidth-time.log
 
 SSH_USER=perttu
 SSH_HOST=dogentu
 IPERF_PORT=5201
 CONTAINER_NAME=iperf3
+SSH_ARGS="-i ~/.ssh/id_rsa_dogentu"
 
 launch_container() {
     # Launch container in the remote host
-    ssh $SSH_USER@$SSH_HOST /bin/bash <<EOF
+    ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 
-docker run -d --rm --name $CONTAINER_NAME iperf3:latest -p $IPERF_PORT:$IPERF_PORT
+docker run -d --rm -p $IPERF_PORT:$IPERF_PORT --name $CONTAINER_NAME iperf3:latest
 
 EOF
 }
 
 stop_container() {
-    ssh $SSH_USER@$SSH_HOST /bin/bash <<EOF
+    ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 docker stop $CONTAINER_NAME
 EOF
 }
 
 run_test() {
+    printf "["
     for ((i=1; i<=$ITERATIONS;i++)); do
-        iperf3 -c remotehost -J	
+        iperf3 -c $SSH_HOST -J
+        if [ "$i" != "$ITERATIONS" ]; then
+            echo ", "
+        fi
     done
-
+    printf "]"
 }
 
-printf "Launching the container..."
+printf "Launching the container...\n"
 launch_container
-printf "Container up. Running tests..."
+printf "Container up. Running tests...\n"
 
 run_test &> $LOG_FILE
 
-printf "Tests finished. Cleaning up container..."
+printf "Tests finished. Cleaning up container...\n"
+
 stop_container
-printf "All done."
+printf "All done.\n"
