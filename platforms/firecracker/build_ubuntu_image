@@ -12,12 +12,11 @@ rootfs=ubuntu-rootfs
 rootfs_dir=~/$rootfs
 rootfs_file=$rootfs.ext4
 mntdir=/mnt/tmpdir
-export rootfs_username=${USERNAME:-$default_username}
+rootfs_username=${USERNAME:-$default_username}
 rootfs_password=${PASSWORD:-$default_password}
-export rootfs_password_encrypted=$(openssl passwd -1 $rootfs_password)
-export rootfs_tz=${TIMEZONE:-$default_tz}
-export hostname=fvm
-export hosts=$(cat <<EOF
+rootfs_tz=${TIMEZONE:-$default_tz}
+hostname=fvm
+hosts=$(cat <<EOF
 127.0.0.1   localhost
 127.0.0.1   $hostname
 EOF
@@ -65,7 +64,7 @@ sudo mount -o bind /dev/pts $mntdir/dev/pts
 
 # Contents to prepend into the provioning script
 vars=$(cat <<EOF
-rootfs_password_encrypted="$rootfs_password_encrypted"
+rootfs_password="$rootfs_password"
 rootfs_username="$rootfs_username"
 hostname="$hostname"
 hosts="$hosts"

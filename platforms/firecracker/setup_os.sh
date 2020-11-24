@@ -22,9 +22,9 @@ apt-get install -y \
     netplan.io \
     --no-install-recommends
 
-useradd -m -p $rootfs_password_encrypted $rootfs_username
-
+useradd -m -p $(openssl passwd -1 $rootfs_password) $rootfs_username
 usermod -aG sudo $rootfs_username
+passwd -d root
 
 echo "$hostname" > /etc/hostname
 echo "$hosts" > /etc/hosts
