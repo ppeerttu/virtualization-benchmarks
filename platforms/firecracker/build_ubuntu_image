@@ -9,7 +9,7 @@ default_username=perttu
 default_password=perttu
 default_tz="Europe/Helsinki"
 rootfs=ubuntu-rootfs
-rootfs_dir=./$rootfs
+rootfs_dir=~/$rootfs
 rootfs_file=$rootfs.ext4
 mntdir=/mnt/tmpdir
 export rootfs_username=${USERNAME:-$default_username}
@@ -89,53 +89,9 @@ sleep 5
 # log_info "Running $provision_script in $mntdir..."
 
 # Run inside the image
+# Note: Using heredoc would be more convenient than separate script,
+# but debugging that is ridiously difficult.
 sudo chroot $mntdir /bin/bash $provision_script_name
-
-# sudo chroot $mntdir /bin/bash <<EOT
-
-# apt-get update
-# apt-get install -y \
-#     language-pack-en-base \
-#     sudo \
-#     ssh \
-#     net-tools \
-#     ethtool \
-#     wireless-tools \
-#     ifupdown \
-#     network-manager \
-#     iputils-ping \
-#     rsyslog \
-#     htop \
-#     vim \
-#     xinit xorg \
-#     alsa-utils \
-#     sudo \
-#     --no-install-recommends
-
-# useradd -m -p $rootfs_password_encrypted $rootfs_username
-
-# usermod -aG sudo $rootfs_username
-
-# echo "$hostname" > /etc/hostname
-# echo "$hosts" > /etc/hosts
-
-# echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
-
-# cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
-
-# EOT
-
-# Set up group for alsa
-# vim /etc/group
-# Change 'audio:x:29' and 'video:x:44' to:
-# audio:x:29:pulse,dogentu
-# video:x:44:dogentu
-
-# Set up group for fbterm
-# vim /etc/group
-
-# Exit at this point from chroot:
-# exit
 
 log_info "Done. Unmounting..."
 

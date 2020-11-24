@@ -19,6 +19,7 @@ apt-get install -y \
     xinit xorg \
     alsa-utils \
     sudo \
+    netplan.io \
     --no-install-recommends
 
 useradd -m -p $rootfs_password_encrypted $rootfs_username
@@ -30,7 +31,7 @@ echo "$hosts" > /etc/hosts
 
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 
-cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
+# cp /usr/share/zoneinfo/$rootfs_tz /etc/localtime
 
 mkdir /etc/systemd/system/serial-getty@ttyS0.service.d/
 cat <<EOF > /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
