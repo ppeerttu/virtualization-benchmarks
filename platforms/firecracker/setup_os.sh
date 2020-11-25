@@ -24,7 +24,7 @@ apt-get install -y \
 
 useradd -m -p $(openssl passwd -1 $rootfs_password) $rootfs_username
 usermod -aG sudo $rootfs_username
-passwd -d root
+# passwd -d root
 
 echo "$hostname" > /etc/hostname
 echo "$hosts" > /etc/hosts
