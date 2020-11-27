@@ -51,7 +51,7 @@ printf "Launching the container...\n"
 launch_container
 printf "Container up. Running tests...\n"
 
-run_test &> $LOG_FILE
+run_test &> $LOGFILE_NAME
 
 printf "Tests finished. Cleaning up container...\n"
 
