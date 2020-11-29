@@ -18,7 +18,8 @@ apt-get install -y \
     vim \
     xinit xorg \
     alsa-utils \
-    netplan.io \
+    iperf3 \
+    sysbench \
     --no-install-recommends
 
 useradd -m -p $(openssl passwd -1 $rootfs_password) $rootfs_username

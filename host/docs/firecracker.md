@@ -143,8 +143,6 @@ $ ifconfig eth0 up \
   && echo "nameserver 8.8.8.8" > /etc/resolv.conf
 
 
-
-
 # We're going to use the docker0 interface for Firecracker guests
 # by creating a new tap device and adding it to the bridge.
 
