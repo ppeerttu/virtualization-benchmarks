@@ -39,13 +39,13 @@ echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
 # ExecStart=-/sbin/agetty --autologin root -o '-p -- \\u' --keep-baud 115200,38400,9600 %I $TERM
 # EOF
 
-cat <<EOF > /etc/netplan/99_config.yaml
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    eth0:
-      dhcp4: true
-EOF
+# cat <<EOF > /etc/netplan/99_config.yaml
+# network:
+#   version: 2
+#   renderer: networkd
+#   ethernets:
+#     eth0:
+#       dhcp4: true
+# EOF
 
-netplan generate
+# netplan generate
