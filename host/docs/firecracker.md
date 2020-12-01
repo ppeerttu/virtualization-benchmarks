@@ -236,3 +236,35 @@ curl --unix-socket /tmp/firecracker.socket -i \
       "action_type": "InstanceStart"
    }'
 ```
+
+### config.json
+
+```json
+{
+  "boot-source": {
+    "kernel_image_path": "/home/perttu/fire-guest/hello-vmlinux.bin",
+    "boot_args": "console=ttyS0 reboot=k panic=1 pci=off"
+  },
+  "drives": [
+    {
+      "drive_id": "rootfs",
+      "path_on_host": "/home/perttu/fire-guest/hello-rootfs.ext4",
+      "is_root_device": true,
+      "is_read_only": false
+    }
+  ],
+  "machine-config": {
+    "vcpu_count": 2,
+    "mem_size_mib": 1024,
+    "ht_enabled": false
+  }
+}
+```
+
+  "network-interfaces": [
+    {
+      "iface_id": "eth0",
+      "guest_mac": "AA:FC:00:00:00:01",
+      "host_dev_name": "tap0"
+    }
+  ],

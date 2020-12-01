@@ -1,13 +1,23 @@
 #!/bin/bash
 
+set -e
+
+GVISOR=""
+RUNSC_ARG=""
+
+if [ "$1" == "--gvisor" ]; then
+    GVISOR="gvisor-"
+    RUNSC_ARG="--runtime=runsc"
+fi
+
 ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-fileio.log
+LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}fileio.log
 
 launch_container() {
-    docker run --rm sysbench:latest sysbench fileio run --file-test-mode=seqrewr
+    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-test-mode=seqrewr
 }
 
 run_test() {

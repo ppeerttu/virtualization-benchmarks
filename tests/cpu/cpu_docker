@@ -3,9 +3,11 @@
 set -e
 
 GVISOR=""
+RUNSC_ARG=""
 
 if [ "$1" == "--gvisor" ]; then
     GVISOR="gvisor-"
+    RUNSC_ARG="--runtime=runsc"
 fi
 
 
@@ -16,7 +18,7 @@ DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}boot-time.log
 
 launch_container() {
-    docker run --rm sysbench:latest
+    docker run --rm $RUNSC_ARG sysbench:latest
 }
 
 run_test() {

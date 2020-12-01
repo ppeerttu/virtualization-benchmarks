@@ -3,9 +3,11 @@
 set -e
 
 GVISOR=""
+RUNSC_ARG=""
 
 if [ "$1" == "--gvisor" ]; then
     GVISOR="gvisor-"
+    RUNSC_ARG="--runtime=runsc"
 fi
 
 
@@ -25,7 +27,7 @@ launch_container() {
     # Launch container in the remote host
     ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 
-docker run -d --rm -p $IPERF_PORT:$IPERF_PORT --name $CONTAINER_NAME iperf3:latest
+docker run -d --rm -p $IPERF_PORT:$IPERF_PORT --name $CONTAINER_NAME $RUNSC_ARG iperf3:latest
 
 EOF
 }
