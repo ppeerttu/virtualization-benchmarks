@@ -11,11 +11,12 @@ mkfs.ext4 /output/image.ext4
 
 mount /output/image.ext4 /rootfs
 debootstrap --include openssh-server,netplan.io,nano focal /rootfs http://archive.ubuntu.com/ubuntu/
-mount --bind / /rootfs/mnt
+mkdir -p /rootfs/mnt/root
+mount --bind /root /rootfs/mnt/root
 
 chroot /rootfs /bin/bash /mnt/script/provision.sh
 
-umount /rootfs/mnt
+umount /rootfs/mnt/root
 umount /rootfs
 
 cd /output
