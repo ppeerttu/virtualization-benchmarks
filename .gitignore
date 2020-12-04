@@ -1,2 +1,6 @@
 # Ubuntu image build folder
 ubuntu-rootfs
+
+# Files generated during running scripts
+*.new
+*.old

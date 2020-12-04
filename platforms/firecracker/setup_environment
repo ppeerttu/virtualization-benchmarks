@@ -29,13 +29,28 @@ curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/$
 mv jailer-${firecracker_version}-${host_arch} jailer
 chmod +x jailer
 
+log_info "Jailer ready."
 popd
 
+pushd ./build
+
+log_info "Building the container for kernel and rootfs..."
+start=`date +%s`
 docker build -t ubuntu-firecracker .
+end=`date +%s`
+
+log_info "Container and kernel built in $((end-start)) seconds. Running the container and building the rootfs..."
+start=`date +%s`
 docker run --privileged -it --rm -v $(pwd)/output:/output ubuntu-firecracker
+end=`date +%s`
+log_info "Rootfs built and exported with kernel in $((end-start)) seconds. Copying to destination..."
 
 cp output/vmlinux $kernel_file
 cp output/image.ext4 $rootfs_file
+
+popd
+
+log_info "All done."
 
 # Add to $PATH?
 # sudo mv firecracker /usr/local/bin/firecracker
