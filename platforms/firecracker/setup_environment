@@ -1,8 +1,10 @@
 #!/bin/bash
 
-source ./config 
+source ./config.sh
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
+
+set -e
 
 log_info() {
     printf "%(%Y-%m-%d %H:%M:%S)T - ${GREEN}INFO${NC} - $1\n"
@@ -19,12 +21,12 @@ pushd $firecracker_dir
 log_info "Downloading Firecracker ${firecracker_version}..."
 
 curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/${firecracker_version}/firecracker-${firecracker_version}-${host_arch}
-mv firecracker-${firecracker_version}-$(uname -m) firecracker
+mv firecracker-${firecracker_version}-${host_arch} firecracker
 chmod +x firecracker
 
 log_info "Firecracker ready. Downloading jailer ${firecracker_version}..."
 curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/${firecracker_version}/jailer-${firecracker_version}-${host_arch}
-mv jailer-${firecracker_version}-$(uname -m) jailer
+mv jailer-${firecracker_version}-${host_arch} jailer
 chmod +x jailer
 
 popd
