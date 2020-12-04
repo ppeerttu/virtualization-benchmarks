@@ -1,0 +1,39 @@
+#!/bin/bash
+
+source ./config 
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+log_info() {
+    printf "%(%Y-%m-%d %H:%M:%S)T - ${GREEN}INFO${NC} - $1\n"
+}
+
+sudo setfacl -m u:${USER}:rw /dev/kvm
+
+log_info "setfacl done"
+
+mkdir -p $firecracker_dir
+
+pushd $firecracker_dir
+
+log_info "Downloading Firecracker ${firecracker_version}..."
+
+curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/${firecracker_version}/firecracker-${firecracker_version}-${host_arch}
+mv firecracker-${firecracker_version}-$(uname -m) firecracker
+chmod +x firecracker
+
+log_info "Firecracker ready. Downloading jailer ${firecracker_version}..."
+curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/${firecracker_version}/jailer-${firecracker_version}-${host_arch}
+mv jailer-${firecracker_version}-$(uname -m) jailer
+chmod +x jailer
+
+popd
+
+docker build -t ubuntu-firecracker .
+docker run --privileged -it --rm -v $(pwd)/output:/output ubuntu-firecracker
+
+cp output/vmlinux $kernel_file
+cp output/image.ext4 $rootfs_file
+
+# Add to $PATH?
+# sudo mv firecracker /usr/local/bin/firecracker
