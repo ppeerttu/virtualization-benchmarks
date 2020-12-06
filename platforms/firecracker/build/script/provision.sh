@@ -18,7 +18,11 @@ network:
   renderer: networkd
   ethernets:
     eth0:
-      dhcp4: true
+     dhcp4: no
+     addresses: [172.16.0.2/24]
+     gateway4: 172.16.0.1
+     nameservers:
+       addresses: [8.8.8.8,8.8.4.4]
 EOF
 netplan generate
 
