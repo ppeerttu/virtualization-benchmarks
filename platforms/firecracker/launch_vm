@@ -1,0 +1,27 @@
+#!/bin/bash
+
+source config.sh
+set -e
+uuid=$(uuidgen)
+jailer=$firecracker_dir/jailer
+firecracker=$firecracker_dir/firecracker
+chroot_dir=/srv/jailer/firecracker/$uuid/
+socket=$chroot_dir/root/run/firecracker.socket
+
+log_info "Starting jailer with ID $uuid..."
+
+$jailer \
+    --id $uuid \
+    --node 0 \
+    --exec-file $firecracker \
+    --uid $(id -u) \
+    --gid $(id -g) \
+    --daemonize
+
+log_info "Done."
+
+# 1. Set network
+# 2. Set kernel
+# 3. Set rootfs
+
+

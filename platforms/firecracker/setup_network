@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+source ./config.sh
+set -e
+
+log_info "Creating iptables backup to $iptables_backup"
+
+sudo iptables-save > $iptables_backup
+
+log_info "Creating tap device $tap_name "
+sudo ip tuntap add $tap_name mode tap
+
+sudo ip addr add $tap_cidr dev $tap_name
+sudo ip link set $tap_name up
+sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+sudo iptables -t nat -A POSTROUTING -o $host_interface -j MASQUERADE
+sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i $tap_name -o $host_interface -j ACCEPT

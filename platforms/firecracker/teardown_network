@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ./config.sh
+set -e
+
+log_info "Deleting tap $tap_name..."
+
+sudo ip link del $tap_name
+
+if [ -f $iptables_backup ]; then
+    log_info "Restoring iptables rules..."
+    sudo iptables-restore < $iptables_backup
+    rm $iptables_backup
+else
+    log_info "No iptables rules found to be restored."
+fi
