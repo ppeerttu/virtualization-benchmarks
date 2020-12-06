@@ -4,6 +4,10 @@
 source ./config.sh
 set -e
 
+client_ip=172.16.0.2
+host_ip=192.168.1.82
+
+
 log_info "Creating iptables backup to $iptables_backup"
 
 sudo iptables-save > $iptables_backup
@@ -20,3 +24,17 @@ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 sudo iptables -t nat -A POSTROUTING -o $host_interface -j MASQUERADE
 sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 sudo iptables -A FORWARD -i $tap_name -o $host_interface -j ACCEPT
+
+forward_port() {
+    from_port=$1
+    to_port=$2
+    sudo iptables -t nat -A PREROUTING -p tcp --dport $from_port -j DNAT --to-destination $client_ip:$to_port
+    sudo iptables -t nat -A POSTROUTING -p tcp -d $client_ip --dport $to_port -j SNAT --to-source $host_ip
+}
+
+# For SSH
+forward_port 24 22
+# For web server
+forward_port 80 80
+# For iperf3
+forward_port 5201 5201
