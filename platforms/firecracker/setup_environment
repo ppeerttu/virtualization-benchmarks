@@ -48,6 +48,10 @@ log_info "Rootfs built and exported with kernel in $((end-start)) seconds. Copyi
 cp output/vmlinux $kernel_file
 cp output/image.ext4 $rootfs_file
 
+log_info "Resizing to $rootfs_final_size..."
+truncate -s $rootfs_final_size $rootfs_file
+resize2fs $rootfs_file
+
 popd
 
 log_info "All done."
