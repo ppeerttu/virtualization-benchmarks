@@ -5,7 +5,7 @@ set -e
 uuid=$(uuidgen)
 jailer=$firecracker_dir/jailer
 firecracker=$firecracker_dir/firecracker
-chroot_dir=/srv/jailer/firecracker/$uuid/
+chroot_dir=/srv/jailer/firecracker/$uuid
 run_dir=$chroot_dir/root/run
 socket=$run_dir/firecracker.socket
 tap_device=$tap_name
@@ -22,6 +22,21 @@ sudo $jailer \
     --uid $uid \
     --gid $gid \
     --daemonize &
+
+log_info "Firecracker and jailer launching, waiting for a while..."
+
+
+i=0
+while [ (! -f $socket) ]; do
+    if [ $i -le 5 ]; do
+        log_info "Firecracker socket still unavailable. Exiting without cleanup."
+        exit 1
+    fi
+    sleep 2
+    ((i=i+1))
+done
+
+log_info "Firecracker socket found"
 
 export SOCKET=$socket
 export TAP_DEVICE=$tap_device
