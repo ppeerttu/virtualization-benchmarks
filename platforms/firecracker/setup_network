@@ -13,6 +13,9 @@ sudo ip tuntap add $tap_name mode tap
 
 sudo ip addr add $tap_cidr dev $tap_name
 sudo ip link set $tap_name up
+
+log_info "Configuring iptables..."
+
 sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
 sudo iptables -t nat -A POSTROUTING -o $host_interface -j MASQUERADE
 sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT

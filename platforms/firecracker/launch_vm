@@ -10,15 +10,17 @@ run_dir=$chroot_dir/root/run
 socket=$run_dir/firecracker.socket
 tap_device=$tap_name
 device_mac=$(cat /sys/class/net/$tap_name/address)
+uid=$(id -u)
+gid=$(id -g)
 
 log_info "Starting jailer with ID $uuid..."
 
-$jailer \
+sudo $jailer \
     --id $uuid \
     --node 0 \
     --exec-file $firecracker \
-    --uid $(id -u) \
-    --gid $(id -g) \
+    --uid $uid \
+    --gid $gid \
     --daemonize
 
 export SOCKET=$socket

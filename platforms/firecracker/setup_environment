@@ -48,6 +48,3 @@ resize2fs $rootfs_file
 popd
 
 log_info "All done."
-
-# Add to $PATH?
-# sudo mv firecracker /usr/local/bin/firecracker
