@@ -4,7 +4,11 @@ set -ex
 dpkg -i /root/linux*.deb
 
 echo 'ubuntu-focal' > /etc/hostname
+echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+useradd -m -p $(openssl passwd -1 fire) fire
+usermod -aG sudo fire
 passwd -d root
+# echo root:root | /usr/sbin/chpasswd
 mkdir /etc/systemd/system/serial-getty@ttyS0.service.d/
 cat <<EOF > /etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf
 [Service]

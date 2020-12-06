@@ -28,6 +28,7 @@ popd
 pushd ./build
 
 log_info "Building the container for kernel and rootfs..."
+rm -rf output/*
 start=`date +%s`
 docker build -t ubuntu-firecracker .
 end=`date +%s`
