@@ -5,8 +5,8 @@ set -e
 uuid=$(uuidgen)
 jailer=$firecracker_dir/jailer
 firecracker=$firecracker_dir/firecracker
-chroot_dir=/srv/jailer/firecracker/$uuid
-run_dir=$chroot_dir/root/run
+chroot_dir=/srv/jailer/firecracker/$uuid/root
+run_dir=$chroot_dir/run
 socket=$run_dir/firecracker.socket
 tap_device=$tap_name
 device_mac=$(cat /sys/class/net/$tap_name/address)
@@ -27,8 +27,8 @@ log_info "Firecracker and jailer launching, waiting for a while..."
 
 
 i=0
-while [ (! -f $socket) ]; do
-    if [ $i -le 5 ]; do
+while [ ! -S $socket ]; do
+    if [ $i -gt 5 ]; then
         log_info "Firecracker socket still unavailable. Exiting without cleanup."
         exit 1
     fi
@@ -41,12 +41,12 @@ log_info "Firecracker socket found"
 export SOCKET=$socket
 export TAP_DEVICE=$tap_device
 export DEVICE_MAC=$device_mac
-export KERNEL_PATH=$run_dir/$kernel_file_name
-export ROOTFS_PATH=$run_dir/$rootfs_file_name
+export KERNEL_PATH=$kernel_file_name
+export ROOTFS_PATH=$rootfs_file_name
 
-log_info "Copying rootfs and kernel to $run_dir..."
-cp $kernel_file $KERNEL_PATH
-cp $rootfs_file $ROOTFS_PATH
+log_info "Copying rootfs and kernel to $chroot_dir..."
+cp $kernel_file $chroot_dir/$kernel_file_name
+cp $rootfs_file $chroot_dir/$rootfs_file_name
 
 log_info "Setting network..."
 
