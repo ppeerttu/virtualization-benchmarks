@@ -2,3 +2,13 @@
 
 source ./config.sh
 set -e
+
+log_info "Removing $firecracker_dir..."
+
+rm -rf $firecracker_dir
+
+log_info "Removing /srv/jailer..."
+
+sudo rm -rf /srv/jailer
+
+log_info "Done."

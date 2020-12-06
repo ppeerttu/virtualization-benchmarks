@@ -21,7 +21,7 @@ sudo $jailer \
     --exec-file $firecracker \
     --uid $uid \
     --gid $gid \
-    --daemonize
+    --daemonize &
 
 export SOCKET=$socket
 export TAP_DEVICE=$tap_device
