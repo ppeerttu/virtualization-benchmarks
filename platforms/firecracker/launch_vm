@@ -6,7 +6,10 @@ uuid=$(uuidgen)
 jailer=$firecracker_dir/jailer
 firecracker=$firecracker_dir/firecracker
 chroot_dir=/srv/jailer/firecracker/$uuid/
-socket=$chroot_dir/root/run/firecracker.socket
+run_dir=$chroot_dir/root/run
+socket=$run_dir/firecracker.socket
+tap_device=$tap_name
+device_mac=$(cat /sys/class/net/$tap_name/address)
 
 log_info "Starting jailer with ID $uuid..."
 
@@ -18,10 +21,28 @@ $jailer \
     --gid $(id -g) \
     --daemonize
 
-log_info "Done."
+export SOCKET=$socket
+export TAP_DEVICE=$tap_device
+export DEVICE_MAC=$device_mac
+export KERNEL_PATH=$run_dir/$kernel_file_name
+export ROOTFS_PATH=$run_dir/$rootfs_file_name
 
-# 1. Set network
-# 2. Set kernel
-# 3. Set rootfs
+log_info "Copying rootfs and kernel to $run_dir..."
+cp $kernel_file $KERNEL_PATH
+cp $rootfs_file $ROOTFS_PATH
 
+log_info "Setting network..."
 
+sh cmd/put_network.sh
+
+log_info "Setting kernel..."
+
+sh cmd/put_kernel.sh
+
+log_info "Setting rootfs..."
+
+sh cmd/put_rootfs.sh
+
+log_info "All done. Launching vm..."
+
+sh cmd/start_vm.sh
