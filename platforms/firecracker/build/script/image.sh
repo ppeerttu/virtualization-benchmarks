@@ -15,7 +15,7 @@ mkfs.ext4 /output/image.ext4
 
 mkdir -p $mount_root
 mount /output/image.ext4 $mount_root
-debootstrap --include openssh-server,netplan.io,nano focal $mount_root http://archive.ubuntu.com/ubuntu/
+debootstrap --include openssh-server,netplan.io,nano,curl focal $mount_root http://archive.ubuntu.com/ubuntu/
 
 mkdir -p $mount_root/root
 mkdir -p $mount_root/script
