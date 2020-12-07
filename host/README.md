@@ -2,6 +2,10 @@
 
 _Scripts and instructions to setup the bare metal host along with guest systems._
 
+## Host machine specs
+
+See the [lshw output](./lshw_output).
+
 ## Installing the operating system
 
 1. Go to [Ubuntu Server Download](https://ubuntu.com/download/server) page, and download `Ubuntu 20.04.1`
