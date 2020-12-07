@@ -13,6 +13,11 @@ device_mac=$(cat /sys/class/net/$tap_name/address)
 uid=$(id -u)
 gid=$(id -g)
 
+if [ ! -z ${guest_id+x} ]; then
+    log_error "Existing guest with id $guest_id found. Please clean up the existing guest before launching a new one."
+    exit 1
+fi
+
 log_info "Starting jailer with ID $uuid..."
 
 sudo $jailer \
@@ -60,6 +65,10 @@ log_info "Setting rootfs..."
 
 sh cmd/put_rootfs.sh
 
-log_info "All done. Launching vm..."
+log_info "Done. Launching vm..."
 
 sh cmd/start_vm.sh
+
+echo "$uuid" > $guest_id_file
+
+log_info "Done. Wrote the guest vm ID $uuid to $guest_id_file"

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GREEN='\033[0;32m'
+RED='\033[31m'
 NC='\033[0m' # No Color
 host_linux_version=$(uname -r)
 host_arch=$(uname -m)
@@ -15,7 +16,16 @@ iptables_backup=$firecracker_dir/iptables.rules.old
 tap_name=tap0
 tap_cidr=172.16.0.1/24
 host_interface=br0
+guest_id_file=$firecracker_dir/.guest_id
+
+if [ -f $guest_id_file ]; then
+    guest_id=$(cat $guest_id_file)
+fi
 
 log_info() {
     printf "%(%Y-%m-%d %H:%M:%S)T - ${GREEN}INFO${NC} - $1\n"
+}
+
+log_error() {
+    printf "%(%Y-%m-%d %H:%M:%S)T - ${RED}ERROR${NC} - $1\n"
 }

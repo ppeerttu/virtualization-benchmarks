@@ -1,0 +1,32 @@
+#!/bin/bash
+
+source config.sh
+set -e
+
+if [ -z ${guest_id+x} ]; then
+    log_error "No existing guest VM found."
+    exit 1
+fi
+
+log_info "Destroying guest with ID $guest_id..."
+
+guest_dir=/srv/jailer/firecracker/$guest_id
+run_dir=$guest_dir/root/run
+socket=$run_dir/firecracker.socket
+
+export SOCKET=$socket
+
+log_info "Issuing stop VM to socket $SOCKET"
+
+sh cmd/stop_vm.sh
+
+log_info "Waiting for 5 seconds..."
+sleep 5
+log_info "Cleaning up resources..."
+
+sudo rm -rf $guest_dir
+
+rm $guest_id_file
+
+log_info "Done."
+
