@@ -1,15 +1,38 @@
 #!/bin/bash
 
+set -e
+
 MYSQL_USER=sbtest
 MYSQL_PASSWORD=pass
 MYSQL_DATABASE=sbtest
 
+# Install MySQL
 sudo apt update && sudo apt install -y mysql-server
 
+# This is skipped as we're just temporarily installing mysql
 # sudo mysql_secure_installation
 
-sudo mysql -e <<EOF
+CMDS=$(
+cat <<EOF
 CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
 CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
-GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
+GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
 EOF
+)
+sudo mysql -e "$CMDS"
+
+echo "User $MYSQL_USER with database $MYSQL_DATABASE created";
+
+sudo bash -c 'cat <<EOF > /etc/mysql/mysql.conf.d/mysqld.override.cnf
+[mysqld]
+bind-address	= 0.0.0.0
+EOF'
+
+sudo systemctl restart mysql
+
+echo "Changed bind address to 0.0.0.0";
+
+sudo ufw allow 3306/tcp
+
+echo "Enabled ufw rule ALLOW 3306/tcp";
+
