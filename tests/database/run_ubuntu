@@ -2,56 +2,51 @@
 
 set -e
 
-if [ "$1" == "--gvisor" ]; then
-    GVISOR="gvisor-"
-    RUNSC_ARG="--runtime=runsc"
+PLATFORMS=("--firecracker" "--vm" "--metal")
+
+if [[ ! " ${PLATFORMS[@]} " =~ " $1 " ]]; then
+    echo "Provided argument '$1' is not a valid platform. Please give one of ${PLATFORMS[@]}"
+    exit 1
 fi
 
+PLATFORM_ARG="$1"
+PLATFORM=${PLATFORM_ARG:2}
 SCRIPTS_BASE=/usr/local/Cellar/sysbench/1.0.20/share/sysbench
-MYSQL_USER=root
-MYSQL_PASSWORD=root
+MYSQL_USER=sbtest
+MYSQL_PASSWORD=pass
 MYSQL_DATABASE=sbtest
 MYSQL_PORT=3306
 MYSQL_HOST=dogentu
 TEST_TABLES=8
-TEST_TABLE_SIZE=100000 # 1000000
+TEST_TABLE_SIZE=1000000
 TEST_REPORT_INTERVAL=1
-TEST_TIME_SECONDS=20
+TEST_TIME_SECONDS=100
 TEST_THREADS=16
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
-SSH_ARGS="-i ~/.ssh/id_rsa_dogentu"
-RUNSC_ARG=""
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}database.log
-ITERATIONS=10
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$PLATFORM-cpu.log
 SSH_USER=perttu
 SSH_HOST=dogentu
-CONTAINER_NAME=mysql
 SSH_ARGS="-i ~/.ssh/id_rsa_dogentu"
 
 log_info() {
-    printf "$(date +%Y-%m-%dT%H:%M:%S%z) ${GREEN}INFO${NC} - $1\n"
+    printf "$(date +%Y-%m-%dT%H:%M:%S%z) - ${GREEN}INFO${NC} - $1\n"
 }
 
-launch_container() {
-    # Launch container in the remote host
-    ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
-
-docker run -d --rm \
-    --name $CONTAINER_NAME $RUNSC_ARG \
-    -p $MYSQL_PORT:3306 \
-    -e MYSQL_ROOT_PASSWORD=$MYSQL_USER \
-    -e MYSQL_DATABASE=$MYSQL_DATABASE \
-    mysql:8
-
-EOF
-
-}
+log_info "Selected platform: $PLATFORM"
 
 prepare_database() {
+
+    ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
+
+mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -e "drop database $MYSQL_DATABASE;"
+mysql -u $MYSQL_USER -p$MYSQL_PASSWORD -e "create database $MYSQL_DATABASE;"
+
+
+EOF
     sysbench $SCRIPTS_BASE/$1.lua \
         --threads=4 \
         --mysql-user=$MYSQL_USER \
@@ -59,8 +54,8 @@ prepare_database() {
         --mysql-port=$MYSQL_PORT \
         --mysql-host=$MYSQL_HOST \
         --mysql-db=$MYSQL_DATABASE \
-        --tables=$TEST_TABLES \
-        --table-size=$TEST_TABLE_SIZE \
+        --tables=10 \
+        --table-size=1000000 \
         prepare
 }
 
@@ -82,41 +77,19 @@ run_test() {
         run
 }
 
-stop_container() {
-    ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
-docker stop $CONTAINER_NAME
-EOF
-
-}
-
 run_all_tests() {
-    log_info "Running oltp_read_only..."
     run_test oltp_read_only
-    log_info "Running oltp_read_write..."
     run_test oltp_read_write
-    log_info "Running oltp_write_only..."
     run_test oltp_write_only
 }
 
-log_info "Launching the container..."
-
-launch_container
-
-log_info "Container launching, waiting for 30 seconds..."
-
-sleep 30
-
-log_info "Container (hopefully) up. Preparing the tests..."
+log_info "Preparing the database..."
 
 # Same preparations for all tests
 prepare_database oltp_read_only
 
-log_info "Preparations done."
+log_info "Database ready. Launching tests..."
 
 run_all_tests &> $LOGFILE_NAME
 
-log_info "Tests finished. Cleaning up container..."
-
-stop_container
-
-log_info "All done.\n"
+log_info "Done."
