@@ -1,0 +1,15 @@
+#!/bin/bash
+
+MYSQL_USER=sbtest
+MYSQL_PASSWORD=pass
+MYSQL_DATABASE=sbtest
+
+sudo apt update && sudo apt install -y mysql-server
+
+# sudo mysql_secure_installation
+
+sudo mysql -e <<EOF
+CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
+GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';"
+EOF
