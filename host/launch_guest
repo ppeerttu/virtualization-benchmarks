@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Guest name
 default_guest=vm1
 # Guest RAM
@@ -17,7 +19,8 @@ GUEST_DISK=${GUEST_DISK:-$default_disk}
 GUEST_VCPU=${GUEST_VCPU:-$default_vcpu}
 GUEST_TTY=${GUEST_TTY:-$default_tty}
 CACHE_PATH=~/.cache/guestvm
-DISK_FILE=ubuntu-20.04-live-server-amd64.iso
+LIBVIRT_IMAGES_PATH=/var/lib/libvirt/images
+DISK_FILE=ubuntu-20.04.1-live-server-amd64.iso
 
 mkdir -p $CACHE_PATH
 
@@ -28,15 +31,16 @@ if [ ! -f $CACHE_PATH/$DISK_FILE ]; then
     popd
 fi
 
+sudo cp -n $CACHE_PATH/$DISK_FILE $LIBVIRT_IMAGES_PATH/
+sudo chown libvirt-qemu:kvm $LIBVIRT_IMAGES_PATH/$DISK_FILE
+
 virt-install --name $GUEST_NAME \
     --memory $GUEST_RAM \
     --vcpus $GUEST_VCPU \
     --cpu host \
     --virt-type kvm \
     --disk size=$GUEST_DISK \
-    --os-type linux \
     --graphics none \
-    --noautoconsole \
     --os-variant ubuntu20.04 \
-    --location $CACHE_PATH/$DISK_FILE \
-    --extra-args "console=$GUEST_TTY"
+    --location $LIBVIRT_IMAGES_PATH/$DISK_FILE \
+    --extra-args console=ttyS0
