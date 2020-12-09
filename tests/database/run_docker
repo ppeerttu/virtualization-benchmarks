@@ -90,11 +90,8 @@ EOF
 }
 
 run_all_tests() {
-    log_info "Running oltp_read_only..."
     run_test oltp_read_only
-    log_info "Running oltp_read_write..."
     run_test oltp_read_write
-    log_info "Running oltp_write_only..."
     run_test oltp_write_only
 }
 
@@ -111,7 +108,7 @@ log_info "Container (hopefully) up. Preparing the tests..."
 # Same preparations for all tests
 prepare_database oltp_read_only
 
-log_info "Preparations done."
+log_info "Preparations done. Running the tests, this may take a while..."
 
 run_all_tests &> $LOGFILE_NAME
 
