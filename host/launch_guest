@@ -16,14 +16,27 @@ GUEST_RAM=${GUEST_RAM:-$default_ram}
 GUEST_DISK=${GUEST_DISK:-$default_disk}
 GUEST_VCPU=${GUEST_VCPU:-$default_vcpu}
 GUEST_TTY=${GUEST_TTY:-$default_tty}
+CACHE_PATH=~/.cache/guestvm
+DISK_FILE=ubuntu-20.04-live-server-amd64.iso
+
+mkdir -p $CACHE_PATH
+
+if [ ! -f $CACHE_PATH/$DISK_FILE ]; then
+    echo "Existing ubuntu disk image not found, downloading one..."
+    pushd ~/.cache/guestvm
+    wget http://releases.ubuntu.com/20.04/$DISK_FILE
+    popd
+fi
 
 virt-install --name $GUEST_NAME \
     --memory $GUEST_RAM \
     --vcpus $GUEST_VCPU \
     --cpu host \
+    --virt-type kvm \
     --disk size=$GUEST_DISK \
     --os-type linux \
     --graphics none \
+    --noautoconsole \
     --os-variant ubuntu20.04 \
-    --location 'http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/' \
+    --location $CACHE_PATH/$DISK_FILE \
     --extra-args "console=$GUEST_TTY"
