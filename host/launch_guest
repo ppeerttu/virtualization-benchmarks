@@ -18,10 +18,12 @@ GUEST_VCPU=${GUEST_VCPU:-$default_vcpu}
 GUEST_TTY=${GUEST_TTY:-$default_tty}
 
 virt-install --name $GUEST_NAME \
-    --ram=$GUEST_RAM \
-    --disk size=$GUEST_DISK \
+    --memory $GUEST_RAM \
     --vcpus $GUEST_VCPU \
+    --cpu host \
+    --disk size=$GUEST_DISK \
     --os-type linux \
+    --graphics none \
     --os-variant ubuntu20.04 \
     --location 'http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/' \
     --extra-args "console=$GUEST_TTY"
