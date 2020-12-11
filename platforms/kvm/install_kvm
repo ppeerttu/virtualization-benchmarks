@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+echo "Installing required packages..."
+
+sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst
+
+echo "Insallations done. Adding users 'libvirt' and 'kvm'..."
+
+sudo adduser `id -un` libvirt
+sudo adduser `id -un` kvm
+
+echo "Disabling the network filtering..."
+
+sudo bash -c 'cat <<EOF > /etc/sysctl.d/bridge.conf
+net.bridge.bridge-nf-call-ip6tables=0
+net.bridge.bridge-nf-call-iptables=0
+net.bridge.bridge-nf-call-arptables=0
+EOF'
+
+sudo bash -c 'cat <<EOF > /etc/udev/rules.d/99-bridge.rules
+ACTION=="add", SUBSYSTEM=="module", KERNEL=="br_netfilter", \           RUN+="/sbin/sysctl -p /etc/sysctl.d/bridge.conf"
+EOF'
+
+echo "Done."
+
+MSG=$(cat <<EOF
+=========================================================================
+
+The installation process is now partially done.
+
+Please reboot your system with:
+
+sudo reboot
+
+And continue the installation by running the ./install_kvm_network script.
+
+=========================================================================
+
+EOF
+)
+
+printf "$MSG\n"
