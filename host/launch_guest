@@ -31,6 +31,9 @@ if [ ! -f $CACHE_PATH/$DISK_FILE ]; then
     popd
 fi
 
+CACHE_DIR=/home/$USER/.cache
+sudo setfacl -m  u:libvirt-qemu:rwx $CACHE_DIR
+
 sudo cp -n $CACHE_PATH/$DISK_FILE $LIBVIRT_IMAGES_PATH/
 sudo chown libvirt-qemu:kvm $LIBVIRT_IMAGES_PATH/$DISK_FILE
 
@@ -43,4 +46,5 @@ virt-install --name $GUEST_NAME \
     --graphics none \
     --os-variant ubuntu20.04 \
     --location $LIBVIRT_IMAGES_PATH/$DISK_FILE \
-    --extra-args console=ttyS0
+    --console $default_tty,target_type=virtio \
+    --dry-run
