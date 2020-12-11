@@ -158,23 +158,24 @@ The purpose of this test is to measure the performance of the platform under gen
 
 ### Case app - pipeline turnover time
 
-The purpose of this test is to measure the performance of the platform under generic application load. The application used in this case is a GitLab, and it is being invoked over HTTP with `ab` benchmarking tool under different concurrency levels.
+The purpose of this test is to measure the performance of the platform under generic stress that is typical to continuous integration pipelines, where code gets comiled and tested. The nature of pipelines reminds a lot about serverless computing from requiements perspective, as in both cases the worker instances are shared, short-living and needed ad-hoc. The test contains two installed components: GitLab server and GitLab runner. The runner is used to run the pipelines, e.g. building and testing the source code.
 
-**Measurement feature**: Generic performance
+**Measurement feature**: Generic performance when running a pipeline (time to run the pipeline)
 
-**Feature metric**: Req / s, mean time (ms) / req
+**Feature metric**: Time (seconds)
 
-**Tools**: [ab][ab-site]
+**Tools**: [GitLab][gitlab-site]
 
 | Machine   | Test description  | Measurement   | Additional notes  |
 |----|----|----|---|
-| Metal | The GitLab server is running on the host, and the `ab` is invoked from another machine. | The `ab` provides results for us. |    |
-| KVM   | Same as above, but the GitLab server is launched on the guest VM. | Same as above. |   |
+| Metal | GitLab server and runner are both running on the host, pipeline run is triggered from another machine. | The GitLab pipeline console provides us the result. |    |
+| KVM   | Same as above, but the GitLab server and runner is launched on the guest VM. | Same as above. |   |
 | Firecracker   | Same as above. This requires custom port forwarding in the host. | Same as above.  |  |
-| Docker        | Container running the GitLab server is launched on the host, and Docker port forwarding used to make it reachable to other machine. | Same as above. |   |
+| Docker        | GitLab server and runner run in separate containers, both on top of the metal host. Docker port-forwarding is used to make the server reachable from outside the host. |   |
 | gVisor        | Same as above. | Same as above. |   |
 
 [sysbench-site]:https://github.com/akopytov/sysbench
 [iperf-site]:https://iperf.fr
 [ab-site]:https://httpd.apache.org/docs/2.4/programs/ab.html
+[gitlab-site]:https://about.gitlab.com
 
