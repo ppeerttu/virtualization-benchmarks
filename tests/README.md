@@ -1,17 +1,18 @@
-# tests
+# Benchmarking tests
 
 Benchmarking tests are described in detail here.
 
-- [tests](#tests)
+- [Benchmarking tests](#benchmarking-tests)
   - [Setup](#setup)
   - [Structure](#structure)
-  - [Tests](#tests-1)
+  - [Tests](#tests)
     - [Boot](#boot)
     - [CPU](#cpu)
     - [Database](#database)
     - [File I/O](#file-io)
     - [Network](#network)
     - [Case app - HTTP benchmarking](#case-app---http-benchmarking)
+    - [Case app - pipeline turnover time](#case-app---pipeline-turnover-time)
 
 ## Setup
 
@@ -19,7 +20,27 @@ Please see the [platforms](../platforms/README.md) for the system setup.
 
 ## Structure
 
-TBD
+Planned structure for conducting the tests. The order of running each test is always the same:
+
+1. Bare metal
+2. KVM
+3. Firecracker
+4. Docker
+5. gVisor
+
+The tests are run in the following structure.
+
+| #   | Test    | Platform    | Concurrency level | Repeating times |
+|---|---|---|---|---|
+| 1 | Boot  | -  |  - | 10 |
+| 2. | CPU  | -  | -  | 10 |
+| 3. | File I/O  | -  | -  | 10 |
+| 4. | Database | - | 10, 30, 60, 90, 120, 150, 180, 200 | 2 (each concurrency level) |
+| 5. | Network | - | - | 10 |
+| 6. | Case app - HTTP | - | 10, 30, 60, 90, 120, 150, 180, 200 | 2 (each concurrency level) |
+| 7. | Case app - pipeline turonver | - | - | 10 |
+
+Since each test set will be run for all platforms, total count of tests per platform will be 82 and thus the total count of tests will be 410.
 
 ## Tests
 
@@ -118,6 +139,24 @@ The purpose of this test is to measure the network bandwidth on each of the plat
 | gVisor        | Same as above. | Same as above. |   |
 
 ### Case app - HTTP benchmarking
+
+The purpose of this test is to measure the performance of the platform under generic application load. The application used in this case is a GitLab, and it is being invoked over HTTP with `ab` benchmarking tool under different concurrency levels.
+
+**Measurement feature**: Generic performance
+
+**Feature metric**: Req / s, mean time (ms) / req
+
+**Tools**: [ab][ab-site]
+
+| Machine   | Test description  | Measurement   | Additional notes  |
+|----|----|----|---|
+| Metal | The GitLab server is running on the host, and the `ab` is invoked from another machine. | The `ab` provides results for us. |    |
+| KVM   | Same as above, but the GitLab server is launched on the guest VM. | Same as above. |   |
+| Firecracker   | Same as above. This requires custom port forwarding in the host. | Same as above.  |  |
+| Docker        | Container running the GitLab server is launched on the host, and Docker port forwarding used to make it reachable to other machine. | Same as above. |   |
+| gVisor        | Same as above. | Same as above. |   |
+
+### Case app - pipeline turnover time
 
 The purpose of this test is to measure the performance of the platform under generic application load. The application used in this case is a GitLab, and it is being invoked over HTTP with `ab` benchmarking tool under different concurrency levels.
 
