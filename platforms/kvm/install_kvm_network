@@ -1,0 +1,85 @@
+#!/bin/bash
+
+set -e
+
+NETPLAN_FILE=/etc/netplan/00-installer-config.yaml
+NETPLAN_FILE_BACKUP=$NETPLAN_FILE.backup
+ETH_NAME=${ETH_NAME:-enp4s0}
+ETH_IP=${ETH_IP:-192.168.1.81/24}
+GATEWAY_IP=${GATEWAY_IP:-192.168.1.1}
+
+NETPLAN_NEW=$(cat <<EOF
+network:
+  ethernets:
+    $ETH_NAME:
+      dhcp4: false
+      dhcp6: false
+  bridges:
+    br0:
+      # Ethernet network interface
+      interfaces: [$ETH_NAME]
+      # Public IP of the host
+      addresses: [$ETH_IP]
+      # IP address of router
+      gateway4: $GATEWAY_IP
+      mtu: 1500
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
+      parameters:
+        stp: true
+        forward-delay: 4
+      dhcp4: no
+      dhcp6: no
+  version: 2
+EOF
+)
+
+if [ -f $NETPLAN_FILE_BACKUP ]; then
+	printf "Netplan file backup already exists.\nThis means that this script has already been run.\nDelete the backup (WITH CAUTION) at $NETPLAN_FILE_BACKUP in case you want to run this script.\n"
+	exit 1
+fi
+
+echo "Destroying the default virsh network..."
+
+virsh net-destroy default
+virsh net-undefine default
+
+
+printf "Done.\nCreating a backup of $NETPLAN_FILE to $NETPLAN_FILE_BACKUP\n"
+
+sudo cp $NETPLAN_FILE $NETPLAN_FILE_BACKUP
+
+printf "Installing the new netplan:\n\n$NETPLAN_NEW\n\n"
+
+sleep 5
+
+sudo bash -c "echo \"$NETPLAN_NEW\" > $NETPLAN_FILE"
+
+sudo netplan apply
+
+echo "New netplan config installed and applied. Creating the bridged network for KVM..."
+
+KVM_NETWORK_NAME=host-bridge
+KVM_NETWORK_CONFIG=$(cat <<EOF
+<network>
+    <name>$KVM_NETWORK_NAME</name>
+    <forward mode="bridge"/>
+    <bridge name="br0"/>
+</network>
+EOF
+)
+KVM_NETWORK_FILE=~/.host-bridge.xml
+
+echo $KVM_NETWORK_CONFIG > $KVM_NETWORK_FILE
+
+printf "Bridge config saved at $KVM_NETWORK_FILE with contents:\n\n$KVM_NETWORK_CONFIG\n\n"
+
+sleep 5
+
+printf "Installing the network..."
+
+virsh net-define $KVM_NETWORK_FILE
+virsh net-start $KVM_NETWORK_NAME
+virsh net-autostart $KVM_NETWORK_NAME
+
+printf "All set and done. Please test that you can see interface br0 with command\n\nip a\n\nand that command\n\nvirsh net-list --all\n\nreturns new bridge network called $KVM_NETWORK_NAME\n"
