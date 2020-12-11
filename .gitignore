@@ -4,3 +4,4 @@ ubuntu-rootfs
 # Files generated during running scripts
 *.new
 *.old
+.DS_Store
