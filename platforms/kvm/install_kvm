@@ -4,7 +4,7 @@ set -e
 
 echo "Installing required packages..."
 
-sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst
+sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst net-tools
 
 echo "Insallations done. Adding users 'libvirt' and 'kvm'..."
 
