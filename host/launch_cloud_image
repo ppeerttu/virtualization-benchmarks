@@ -67,6 +67,7 @@ cat >user-data <<EOF
 #cloud-config
 
 users:
+  - default
   - name: perttu
     ssh-authorized-keys:
       - $PUBLIC_KEY_CONTENTS
@@ -74,17 +75,23 @@ users:
     groups: sudo
     shell: /bin/bash
 
+network:
+  network:
+    ethernets:
+      eth0:
+        dhcp4: yes
+    version: 2
+
 ssh:
   install-server: yes
   authorized-keys:
     - $PUBLIC_KEY_CONTENTS
 
-output:
-  all: ">> /var/log/cloud-init.log"
-
 runcmd:
   - echo "AllowUsers perttu" >> /etc/ssh/sshd_config
   - restart ssh
+  - systemctl enable serial-getty@ttyS0.service
+  - systemctl start serial-getty@ttyS0.service
 EOF
 
 sudo genisoimage -output $USER_DATA_IMAGE \
@@ -105,6 +112,5 @@ virt-install --connect qemu:///system \
     --import \
     --noautoconsole \
     --graphics none \
-    --network network=host-bridge \
     --console pty,target_type=serial \
     --os-variant ubuntu20.04
