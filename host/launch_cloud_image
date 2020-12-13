@@ -77,10 +77,11 @@ users:
 
 network:
   network:
-    ethernets:
-      eth0:
-        dhcp4: yes
     version: 2
+    renderer: networkd
+    ethernets:
+      enp1s0:
+        dhcp4: yes
 
 ssh:
   install-server: yes
