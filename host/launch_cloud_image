@@ -91,6 +91,8 @@ ssh:
 runcmd:
   - echo "AllowUsers perttu" >> /etc/ssh/sshd_config
   - restart ssh
+  - netplan generate
+  - netplan apply
   - systemctl enable serial-getty@ttyS0.service
   - systemctl start serial-getty@ttyS0.service
 EOF
