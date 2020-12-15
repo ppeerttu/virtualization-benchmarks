@@ -17,5 +17,10 @@ sudo reboot
 ./install_kvm_network
 ```
 
-After this you should be able to create guest VMs.
+After this you should be able to create guest VMs by running:
 
+```bash
+./install_kvm_guest
+```
+
+This launches a legacy installer, which will be deprecated. However, for this project it should be fine. Please make sure you remember to select `OpenSSH Server` as installed software in order to be able to connect to the server.
