@@ -1,3 +1,9 @@
 #!/bin/bash
 
 docker build -t gitlab-custom-ee:latest .
+
+printf "\nGitLab image built, building GitLab runner...\n\n"
+
+docker build -t gitlab-custom-runner:latest -f Dockerfile.runner .
+
+printf "Done\n"

@@ -1,0 +1,4 @@
+FROM gitlab/gitlab-runner:latest
+
+# Run required tools for running the case app pipeline as shell executor
+RUN apt-get update && apt-get install -y build-essential valgrind lcov cppcheck

@@ -1,0 +1,8 @@
+# System files
+.DS_Store
+
+# From doxygen
+html
+latex
+*/html
+*/latex

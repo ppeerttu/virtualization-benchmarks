@@ -11,12 +11,13 @@ GitLab stuff sourced from [omnibus-gitlab](https://gitlab.com/gitlab-org/omnibus
 
 ## Running the GitLab with containers
 
-1. Build the GitLab docker image: `./gitlab/build`
-2. Run the image: `./gitlab/run`
-3. Run the runner image: `./gitlab/run_runner`
-4. Go to the GitLab admin panel, and fetch runner registartion details
-5. Run the registration: `./gitlab/register_runner`
-6. Restart the runner if needed: `docker restart gitlab-runner`
+1. Change directory: `cd gitlab`
+2. Build the GitLab docker image: `./build`
+3. Run the image: `./run`
+4. Run the runner image: `./run_runner`
+5. Go to the GitLab admin panel, and fetch runner registartion details
+6. Run the registration: `./register_runner`
+7. Restart the runner if needed: `docker restart gitlab-runner`
 
 ## Running sysbench
 
