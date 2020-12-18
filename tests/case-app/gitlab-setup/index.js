@@ -3,14 +3,28 @@
 const puppeteer = require("puppeteer");
 const logger = require("pino")();
 const rl = require('readline');
-const fs = require("fs");
 const child = require("child_process");
+const fse = require("fs-extra");
+const path = require("path");
 
-const GITLAB_URL = "http://gitlab.custom.local";
+const GITLAB_DOMAIN = "gitlab.custom.local";
+const GITLAB_URL = "http://" + GITLAB_DOMAIN;
 const GITLAB_USER = "root";
 const GITLAB_PASSWORD = "6sGAteviPyQ.kDcnZDv7";
+const GITLAB_PROJECT_NAME = "case-app";
+const GITLAB_PROJECT_SLUG = GITLAB_PROJECT_NAME;
+const REPO_PARENT = `${process.env.HOME}/.virtualization-tests`;
+const REPO_TARGET = REPO_PARENT + "/case-repo";
 const SSH_KEY = "gitlab_ed25519";
 const SSH_EMAIL = "example@example.com";
+const SSH_CONFIG = `
+Host gitlab.custom.local
+  StrictHostKeyChecking no
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/${SSH_KEY}
+
+`;
 
 /**
  * Register the GitLab root user.
@@ -96,10 +110,11 @@ async function registerSshKey(browser) {
     const KEY_SELECTOR = "#key_key";
     const KEY_TITLE_SELECTOR = "#key_title";
     const KEY_FORM_SELECTOR = "#new_key";
+    const SSH_CONFIG_FILE = `${process.env.HOME}/.ssh/config`;
     // No-password ssh key
     const cmd = `ssh-keygen -f ${KEY_LOCATION} -t ed25519 -C "${SSH_EMAIL}" -q -N ""`;
 
-    if (!fs.existsSync(KEY_LOCATION)) {
+    if (!fse.existsSync(KEY_LOCATION)) {
         logger.info(`No ssh key found from ${KEY_LOCATION}, creating one...`);
         const [stdout, stderr] = await new Promise((resolve, reject) => {
             child.exec(cmd, (err, stdout, stderr) => {
@@ -110,8 +125,15 @@ async function registerSshKey(browser) {
             });
         });
         logger.info(`Key created, stdout: "${stdout}", stderr: "${stderr}"`);
+        // Config for OS X
+        if (!fse.existsSync(SSH_CONFIG_FILE)) {
+            await fse.writeFile(SSH_CONFIG_FILE, SSH_CONFIG, { encoding: "utf-8" });
+        } else {
+            await fse.appendFile(SSH_CONFIG_FILE, SSH_CONFIG);
+        }
+
     }
-    const publicKeyContents = fs.readFileSync(`${KEY_LOCATION}.pub`, "utf-8");
+    const publicKeyContents = await fse.readFile(`${KEY_LOCATION}.pub`, "utf-8");
     
     const page = await browser.newPage();
     await page.goto(GITLAB_URL + KEYS_PATH);
@@ -119,6 +141,64 @@ async function registerSshKey(browser) {
     await page.$eval(KEY_TITLE_SELECTOR, (e, val) => e.value = val, SSH_KEY);
     await page.$eval(KEY_FORM_SELECTOR, (form) => form.submit());
     await page.waitForNavigation();
+    const success = await page.evaluate((selector) => {
+        const el = document.querySelector(selector);
+        // If element is found, we didn't navigate to the new key page
+        return !el;
+    }, KEY_SELECTOR);
+    if (!success) {
+        await page.screenshot({ path: "error.png" });
+        throw new Error("Generating SSH key failed, check error.png for details");
+    }
+}
+
+/**
+ * Copy the repository to temporary destination in order to be able to use it with GitLab.
+ */
+async function copyRepository() {
+    const REPO_SOURCE = path.join(__dirname, "..", "case-repo");
+    if (!fse.existsSync(REPO_PARENT)) {
+        logger.info(`Creating directory ${REPO_PARENT}...`);
+        await fse.mkdirp(REPO_PARENT);
+    }
+    if (!fse.existsSync(REPO_TARGET)) {
+        logger.info(`Copying the repository from ${REPO_SOURCE} to ${REPO_TARGET}`);
+        await fse.copy(REPO_SOURCE, REPO_TARGET);
+    } else if (fse.existsSync(`${REPO_TARGET}/.git`)) {
+        logger.info("Directory exists and contains .git -directory, removing it...");
+        await fse.remove(`${REPO_TARGET}/.git`);
+    }
+}
+
+/**
+ * Register the case app repository into GitLab server.
+ *
+ * @param {puppeteer.Browser} browser The browser
+ */
+async function registerRepository(browser) {
+    const NEW_PROJECT_URL = GITLAB_URL + "/projects/new";
+    const PROJECT_NAME_SELECTOR = "#project_name";
+    const PROJECT_SLUG_SELECTOR = "#project_path"
+    const PROJECT_FORM_SELECTOR = "#new_project";
+    const PROJECT_URL = `${GITLAB_URL}/${GITLAB_USER}/${GITLAB_PROJECT_SLUG}`;
+    const page = await browser.newPage();
+    await page.goto(NEW_PROJECT_URL);
+    await page.$eval(PROJECT_NAME_SELECTOR, (e, v) => e.value = v, GITLAB_PROJECT_NAME);
+    await page.$eval(PROJECT_SLUG_SELECTOR, (e, v) => e.value = v, GITLAB_PROJECT_SLUG);
+    await page.$eval(PROJECT_FORM_SELECTOR, (e) => e.submit());
+    await page.waitForNavigation();
+    if (page.url() !== PROJECT_URL) {
+        logger.warn(`Expected the URL to be ${PROJECT_URL} but it was ${page.url()} instead, failing...`);
+        await page.screenshot({ path: "error.png" });
+        throw new Error("Creating a new project failed, check error.png for details");
+    }
+    logger.info("Registering the repository...");
+    const output = child.execSync(
+        `cd ${REPO_TARGET} && git init `
+        + `&& git remote add origin git@${GITLAB_DOMAIN}:${GITLAB_USER}/${GITLAB_PROJECT_SLUG}.git`
+        + `&& git add . && git commit -m "Initial commit" && git push -u origin master`
+    );
+    logger.info(output.toString());
 }
 
 /**
@@ -129,7 +209,10 @@ async function registerSshKey(browser) {
 async function createRepository(browser) {
     await registerSshKey(browser);
     logger.info("SSH key installed");
-    
+    await copyRepository();
+    logger.info("Repository in place");
+    await registerRepository(browser);
+    logger.info("Repository registered");
 }
 
 /**
