@@ -18,7 +18,7 @@ const REPO_TARGET = REPO_PARENT + "/case-repo";
 const SSH_KEY = "gitlab_ed25519";
 const SSH_EMAIL = "example@example.com";
 const SSH_CONFIG = `
-Host gitlab.custom.local
+Host ${GITLAB_DOMAIN}
   StrictHostKeyChecking no
   AddKeysToAgent yes
   UseKeychain yes
@@ -239,12 +239,15 @@ async function main() {
     const browser = await puppeteer.launch();
     
     try {
-        // await registerRoot(browser);
+        // Register root user
+        await registerRoot(browser);
         logger.info(`GitLab account registered with username '${GITLAB_USER}' and password '${GITLAB_PASSWORD}'`);
 
-        // await registerRunner(browser);
-        await login(browser);
+        // Register runner - requires manual work
+        await registerRunner(browser);
         logger.info("Runner registered");
+
+        // Crete the case app repository
         await createRepository(browser);
     } catch (e) {
         logger.error(e, "Script failed");

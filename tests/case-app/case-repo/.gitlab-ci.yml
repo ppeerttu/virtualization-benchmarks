@@ -5,10 +5,8 @@ stages:
 build-code-job:
   stage: build
   script:
-    - cd src
-    - g++ compositematrix_tests.cpp concretematrix_tests.cpp symbolicmatrix_tests.cpp element_tests.cpp compositematrix.cpp elementarymatrix.cpp element.cpp -o ../out/runnable --coverage -std=c++11
-    - cd ../out
-    - valgrind --leak-check=full --show-leak-kinds=all ./runnable -r compact
+    - g++ src/compositematrix_tests.cpp src/concretematrix_tests.cpp src/symbolicmatrix_tests.cpp src/element_tests.cpp src/compositematrix.cpp src/elementarymatrix.cpp src/element.cpp -o ./out/runnable --coverage -std=c++11
+    - valgrind --leak-check=full --show-leak-kinds=all ./out/runnable -r compact
     - lcov -t "runnable" -o tests.info -c -d .
     - genhtml -o coverage tests.info
     - cppcheck ./ -i./catch.h  --enable=style --force --xml 2> cppcheck.xml
