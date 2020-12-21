@@ -71,7 +71,7 @@ run_test() {
         do
             log_info "Running tests with concurrency at $c"
             sysbench $SCRIPTS_BASE/$1.lua \
-                --threads=$CONCURRENCY \
+                --threads=$c \
                 --events=0 \
                 --time=$TEST_TIME_SECONDS \
                 --mysql-user=$MYSQL_USER \
