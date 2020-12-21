@@ -64,9 +64,11 @@ async function login(browser) {
     const USERNAME_SELECTOR = "#user_login";
     const PASSWORD_SELECTOR = "#user_password";
     const FORM_SELECTOR = "#new_user";
-    const ADMIN_AREA_PATH = "body > header > div > div > div.title-container > ul > li:nth-child(5) > a";
+    
+    const ADMIN_AREA_PATH = "ul > li.d-xl-block > a.admin-icon.qa-admin-area-link";
     const ADMIN_AREA_LABEL = "Admin Area";
     const page = await browser.newPage();
+    await page.setViewport({ width: 1920, height: 1080 });
     await page.goto(GITLAB_URL + "/users/sign_in");
     await page.$eval(USERNAME_SELECTOR, (e, val) => e.value = val, GITLAB_USER);
     await page.$eval(PASSWORD_SELECTOR, (e, val) => e.value = val, GITLAB_PASSWORD);
@@ -240,7 +242,7 @@ async function main() {
     
     try {
         // Register root user
-        await registerRoot(browser);
+        // await registerRoot(browser);
         logger.info(`GitLab account registered with username '${GITLAB_USER}' and password '${GITLAB_PASSWORD}'`);
 
         // Register runner - requires manual work
