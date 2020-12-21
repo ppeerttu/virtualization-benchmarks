@@ -21,7 +21,9 @@ TEST_TABLES=8
 TEST_TABLE_SIZE=1000000
 TEST_REPORT_INTERVAL=1
 TEST_TIME_SECONDS=60
-TEST_THREADS=16
+ITERATIONS=10
+CONCURRENCY=(10 30 60 90 120 150 180 200)
+SLEEP_TIME=5
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -63,21 +65,30 @@ EOF
 }
 
 run_test() {
-    sysbench $SCRIPTS_BASE/$1.lua \
-        --threads=$TEST_THREADS \
-        --events=0 \
-        --time=$TEST_TIME_SECONDS \
-        --mysql-user=$MYSQL_USER \
-        --mysql-password=$MYSQL_PASSWORD \
-        --mysql-port=$MYSQL_PORT \
-        --mysql-host=$MYSQL_HOST \
-        --mysql-db=$MYSQL_DATABASE \
-        --tables=$TEST_TABLES \
-        --table-size=$TEST_TABLE_SIZE \
-        --range_selects=off \
-        --db-ps-mode=disable \
-        --report-interval=$TEST_REPORT_INTERVAL \
-        run
+    for ((i=0; i<$ITERATIONS; ++i)); do
+        log_info "=== ITERATION $i ==="
+        for c in "${CONCURRENCY[@]}"
+        do
+            log_info "Running tests with concurrency at $c"
+            sysbench $SCRIPTS_BASE/$1.lua \
+                --threads=$CONCURRENCY \
+                --events=0 \
+                --time=$TEST_TIME_SECONDS \
+                --mysql-user=$MYSQL_USER \
+                --mysql-password=$MYSQL_PASSWORD \
+                --mysql-port=$MYSQL_PORT \
+                --mysql-host=$MYSQL_HOST \
+                --mysql-db=$MYSQL_DATABASE \
+                --tables=$TEST_TABLES \
+                --table-size=$TEST_TABLE_SIZE \
+                --range_selects=off \
+                --db-ps-mode=disable \
+                --report-interval=$TEST_REPORT_INTERVAL \
+                run >> $LOGFILE_NAME
+            log_info "Done. Cool down for $SLEEP_TIME seconds..."
+            sleep $SLEEP_TIME
+        done
+    done
 }
 
 run_all_tests() {
@@ -93,6 +104,6 @@ prepare_database oltp_read_only
 
 log_info "Database ready. Running the tests, this may take a while..."
 
-run_all_tests &> $LOGFILE_NAME
+run_all_tests
 
 log_info "Done."

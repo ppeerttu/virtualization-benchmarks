@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -e
+
+PLATFORMS=("--firecracker" "--vm" "--metal" "--docker" "--gvisor")
+
+if [[ ! " ${PLATFORMS[@]} " =~ " $1 " ]]; then
+    echo "Provided argument '$1' is not a valid platform. Please give one of ${PLATFORMS[@]}"
+    exit 1
+fi
+
+PLATFORM_ARG="$1"
+PLATFORM=${PLATFORM_ARG:2}
+
+ITERATIONS=10
+REQUESTS=5000
+CONCURRENCY=(10 30 60 90 120 150 180 200)
+SLEEP_TIME=30
+URL=http://gitlab.custom.local/
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+OUTPUT_DIR=$DIR/output
+DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$PLATFORM-http-benchmark.log
+
+
+run_tests() {
+    
+    for ((i=0; i<$ITERATIONS; ++i)); do
+        echo "=== ITERATION $i ==="
+        for c in "${CONCURRENCY[@]}"
+        do
+            echo "Running tests with concurrency at $c"
+            ab -r -n $REQUESTS -c $CONCURRENCY http://gitlab.custom.local/ >> $LOGFILE_NAME
+            echo "Done. Cool down for 30 seconds..."
+            sleep $SLEEP_TIME
+        done
+    done
+}
+
+run_tests

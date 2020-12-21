@@ -11,19 +11,21 @@ if [ "$1" == "--gvisor" ]; then
 fi
 
 ITERATIONS=10
+TEST_TIME=30
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}fileio.log
 
 launch_container() {
-    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-test-mode=seqrewr
+    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-test-mode=seqrewr --time=$TEST_TIME
 }
 
 run_test() {
     for ((i=1; i<=$ITERATIONS;i++)); do
-        launch_container
+        echo "Running iteration $i..."
+        launch_container >> $LOG_FILE
     done
 }
 
-run_test &> $LOG_FILE
+run_test
