@@ -25,7 +25,8 @@ wait_until_poweron_input() {
 
 run_iteration() {
     wait_until_poweron_input
-    time ping_host >> $LOGFILE_NAME 2>&1
+
+    (time ping_host) >> $LOGFILE_NAME 2>&1
 
     sleep 2
 
