@@ -21,7 +21,7 @@ PLATFORM=${PLATFORM_ARG:2}
 
 printf "Selected platform: $PLATFORM\n"
 
-ITERATIONS=1
+ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
