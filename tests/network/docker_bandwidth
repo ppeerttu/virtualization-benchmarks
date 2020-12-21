@@ -4,18 +4,24 @@ set -e
 
 GVISOR=""
 RUNSC_ARG=""
+IPERF_UDP_ARGS=""
+TEST_TYPE="bandwidth"
 
 if [ "$1" == "--gvisor" ]; then
     GVISOR="gvisor-"
     RUNSC_ARG="--runtime=runsc"
 fi
 
+if [[ "$1" == "--udp" || "$2" == "--udp" ]]; then
+    IPERF_UDP_ARGS="-u "
+    TEST_TYPE="jitter"
+fi
 
 ITERATIONS=1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}bandwidth-time.log
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}$TEST_TYPE.log
 
 SSH_USER=perttu
 SSH_HOST=dogentu
@@ -28,7 +34,7 @@ launch_container() {
     # Launch container in the remote host
     ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 LOGS_DIR="\$(pwd)${SERVER_LOG_DIR}"
-LOG_FILE=$DATETIME-bandwidth.log
+LOG_FILE=$DATETIME-docker-${GVISOR}${TEST_TYPE}.log
 mkdir -p \$LOGS_DIR
 docker run -d \
     --rm \
@@ -50,7 +56,7 @@ EOF
 run_test() {
     printf "["
     for ((i=1; i<=$ITERATIONS;i++)); do
-        iperf3 -c $SSH_HOST -u --port $IPERF_PORT
+        iperf3 -c $SSH_HOST ${IPERF_UDP_ARGS}--port $IPERF_PORT -J
         if [ "$i" != "$ITERATIONS" ]; then
             echo ", "
         fi
@@ -62,7 +68,7 @@ printf "Launching the container...\n"
 launch_container
 printf "Container up. Running tests...\n"
 
-run_test
+run_test &> $LOGFILE_NAME
 
 printf "Tests finished. Cleaning up container...\n"
 
