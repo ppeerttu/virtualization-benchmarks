@@ -54,7 +54,7 @@ EOF
 
 prepare_database() {
     sysbench $SCRIPTS_BASE/$1.lua \
-        --threads=4 \
+        --threads=8 \
         --mysql-user=$MYSQL_USER \
         --mysql-password=$MYSQL_PASSWORD \
         --mysql-port=$MYSQL_PORT \
