@@ -2,6 +2,9 @@
 
 set -e
 
+RUNSC_ARG=""
+GVISOR=""
+
 if [ "$1" == "--gvisor" ]; then
     GVISOR="gvisor-"
     RUNSC_ARG="--runtime=runsc"
@@ -22,7 +25,6 @@ CONCURRENCY=(10 20 30 40 50 60 70)
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 SSH_ARGS="-i ~/.ssh/id_rsa_dogentu"
-RUNSC_ARG=""
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
