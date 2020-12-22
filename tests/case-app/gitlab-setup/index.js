@@ -242,7 +242,7 @@ async function main() {
     
     try {
         // Register root user
-        // await registerRoot(browser);
+        await registerRoot(browser);
         logger.info(`GitLab account registered with username '${GITLAB_USER}' and password '${GITLAB_PASSWORD}'`);
 
         // Register runner - requires manual work
