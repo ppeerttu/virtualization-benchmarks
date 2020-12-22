@@ -1,6 +1,16 @@
 #!/bin/bash
 
-docker run -d --name gitlab-runner --restart always \
+set -e
+
+RUNSC_ARG=""
+
+if [ "$1" == "--gvisor" ]; then
+    RUNSC_ARG="--runtime=runsc"
+fi
+
+echo "RUNSC_ARG $RUNSC_ARG"
+
+docker run -d --name gitlab-runner --restart always $RUNSC_ARG \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v gitlab-runner-config:/etc/gitlab-runner \
     --network=host \

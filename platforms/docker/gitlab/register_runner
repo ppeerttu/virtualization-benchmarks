@@ -1,6 +1,16 @@
 #!/bin/bash
 
-docker run --rm -it \
+set -e
+
+RUNSC_ARG=""
+
+if [ "$1" == "--gvisor" ]; then
+    RUNSC_ARG="--runtime=runsc"
+fi
+
+echo "RUNSC_ARG $RUNSC_ARG"
+
+docker run --rm -it $RUNSC_ARG \
     --network=host \
     -v gitlab-runner-config:/etc/gitlab-runner \
     gitlab/gitlab-runner:latest register

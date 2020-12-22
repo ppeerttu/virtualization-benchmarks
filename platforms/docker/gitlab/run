@@ -1,6 +1,16 @@
 #!/bin/bash
 
-docker run --detach \
+set -e
+
+RUNSC_ARG=""
+
+if [ "$1" == "--gvisor" ]; then
+    RUNSC_ARG="--runtime=runsc"
+fi
+
+echo "RUNSC_ARG $RUNSC_ARG"
+
+docker run --detach $RUNSC_ARG  \
     --hostname gitlab.custom.local \
     --publish 443:443 --publish 80:80 --publish 22:22 \
     --name gitlab \
