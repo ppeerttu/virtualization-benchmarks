@@ -35,6 +35,7 @@ SSH_HOST=dogentu
 SSH_ARGS="-i ~/.ssh/id_rsa_dogentu"
 if [[ "$PLATFORM" == "vm" ]]; then
     SSH_HOST=vm1
+    MYSQL_HOST=vm1
 fi
 
 log_info() {
