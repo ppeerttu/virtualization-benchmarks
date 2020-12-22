@@ -40,7 +40,7 @@ launch_server() {
     ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 LOGS_DIR=\$(pwd)/logs
 mkdir -p \$LOGS_DIR
-LOGFILE=\$LOGS_DIR/$DATETIME-$PLATFORM-$TEST_TYPE.log
+LOGFILE=\$LOGS_DIR/$DATETIME-$PLATFORM-$TEST_TYPE-server.log
 iperf3 -s -D -J --logfile \$LOGFILE --port $IPERF_PORT
 EOF
 }

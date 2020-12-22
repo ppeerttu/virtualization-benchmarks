@@ -34,7 +34,7 @@ launch_container() {
     # Launch container in the remote host
     ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
 LOGS_DIR="\$(pwd)${SERVER_LOG_DIR}"
-LOG_FILE=$DATETIME-docker-${GVISOR}${TEST_TYPE}.log
+LOG_FILE=$DATETIME-docker-${GVISOR}${TEST_TYPE}-server.log
 mkdir -p \$LOGS_DIR
 docker run -d \
     --rm \
