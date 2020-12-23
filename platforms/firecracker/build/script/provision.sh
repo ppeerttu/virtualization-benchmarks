@@ -91,8 +91,8 @@ apt-get update
 
 curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | bash
 
-
 apt-get install -y \
     iperf3 \
     sysbench \
-    git
+    git \
+    mysql-server
