@@ -10,7 +10,7 @@ rm -rf /output/*
 cp /root/linux-source-$KERNEL_SOURCE_VERSION/vmlinux /output/vmlinux
 cp /root/linux-source-$KERNEL_SOURCE_VERSION/.config /output/config
 
-truncate -s 1G /output/image.ext4
+truncate -s 5G /output/image.ext4
 mkfs.ext4 /output/image.ext4
 
 mkdir -p $mount_root
