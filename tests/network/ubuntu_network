@@ -35,6 +35,11 @@ if [[ "$PLATFORM" == "vm" ]]; then
     SSH_HOST=vm1
 fi
 
+if [[ "$PLATFORM" == "firecracker" ]]; then
+    SSH_USER=fire
+fi
+
+
 launch_server() {
     # Launch server in the remote host
     ssh $SSH_ARGS $SSH_USER@$SSH_HOST /bin/bash <<EOF
