@@ -11,7 +11,10 @@ kernel_file_name=ubuntu-vmlinux
 rootfs_file_name=ubuntu-rootfs.ext4
 kernel_file=$firecracker_dir/$kernel_file_name
 rootfs_file=$firecracker_dir/$rootfs_file_name
-rootfs_final_size=5G
+rootfs_final_size=30G
+guest_memory=3934
+guest_vcpu=4
+
 iptables_backup=$firecracker_dir/iptables.rules.old
 tap_name=tap0
 tap_cidr=172.16.0.1/24

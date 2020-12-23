@@ -51,6 +51,8 @@ export TAP_DEVICE=$tap_device
 export DEVICE_MAC=$device_mac
 export KERNEL_PATH=$kernel_file_name
 export ROOTFS_PATH=$rootfs_file_name
+export GUEST_MEMORY=$guest_memory
+export GUEST_VCPU=$guest_vcpu
 
 log_info "Copying rootfs and kernel to $chroot_dir..."
 cp $kernel_file $chroot_dir/$kernel_file_name
@@ -67,6 +69,10 @@ sh cmd/put_kernel.sh
 log_info "Setting rootfs..."
 
 sh cmd/put_rootfs.sh
+
+log_info "Setting machine config to $GUEST_VCPU vCPU and $GUEST_MEMORY MiB RAM..."
+
+sh cmd/put_machine_config.sh
 
 log_info "Done. Launching vm..."
 
