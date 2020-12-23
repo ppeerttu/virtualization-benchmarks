@@ -3,15 +3,18 @@
 source config.sh
 set -e
 uuid=$(uuidgen)
+srv_dir=/srv/jailer
 jailer=$firecracker_dir/jailer
 firecracker=$firecracker_dir/firecracker
-chroot_dir=/srv/jailer/firecracker/$uuid/root
+chroot_dir=$srv_dir/firecracker/$uuid/root
 run_dir=$chroot_dir/run
 socket=$run_dir/firecracker.socket
 tap_device=$tap_name
 device_mac=$(cat /sys/class/net/$tap_name/address)
 uid=$(id -u)
 gid=$(id -g)
+
+sudo mkdir -p $srv_dir
 
 if [ ! -z ${guest_id+x} ]; then
     log_error "Existing guest with id $guest_id found. Please clean up the existing guest before launching a new one."
