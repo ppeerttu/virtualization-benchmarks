@@ -36,4 +36,5 @@ apt-get update
 
 apt-get install -y \
     iperf3 \
-    sysbench
+    sysbench \
+    git

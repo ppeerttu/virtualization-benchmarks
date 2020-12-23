@@ -32,9 +32,20 @@ forward_port() {
     sudo iptables -t nat -A POSTROUTING -p tcp -d $client_ip --dport $to_port -j SNAT --to-source $host_ip
 }
 
+forward_port_udp() {
+    from_port=$1
+    to_port=$2
+    sudo iptables -t nat -A PREROUTING -p udp --dport $from_port -j DNAT --to-destination $client_ip:$to_port
+    sudo iptables -t nat -A POSTROUTING -p udp -d $client_ip --dport $to_port -j SNAT --to-source $host_ip
+}
+
 # For SSH
-forward_port 24 22
+forward_port 22 22
 # For web server
 forward_port 80 80
 # For iperf3
 forward_port 5201 5201
+forward_port_udp 5201 5201
+# For MySQL
+forward_port 3306 3306
+
