@@ -87,11 +87,25 @@ deb http://fi.archive.ubuntu.com/ubuntu focal-security multiverse
 # deb-src http://fi.archive.ubuntu.com/ubuntu focal-security multiverse
 EOF
 
+GITLAB_URL="http://gitlab.custom.local"
+
 apt-get update
 
 curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | bash
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | bash
+curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash
 
 apt-get install -y \
     iperf3 \
     sysbench \
-    git
+    ca-certificates \
+    git \
+    tzdata \
+    build-essential \
+    valgrind \
+    lcov \
+    cppcheck
+
+# Install GitLab and GitLab Runner with the following commands once you have the VM launched
+# EXTERNAL_URL=$GITLAB_URL apt-get install gitlab-ee=13.2.0-ee.0
+# GITLAB_RUNNER_DISABLE_SKEL=true apt-get install gitlab-runner=13.2.4

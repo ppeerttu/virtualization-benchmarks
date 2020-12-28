@@ -6,7 +6,8 @@ NC='\033[0m' # No Color
 host_linux_version=$(uname -r)
 host_arch=$(uname -m)
 firecracker_dir=~/.firecracker
-firecracker_version=$(basename $(curl -fsSLI -o /dev/null -w  %{url_effective} https://github.com/firecracker-microvm/firecracker/releases/latest))
+firecracker_version=v0.23.1
+# $(basename $(curl -fsSLI -o /dev/null -w  %{url_effective} https://github.com/firecracker-microvm/firecracker/releases/latest))
 kernel_file_name=ubuntu-vmlinux
 rootfs_file_name=ubuntu-rootfs.ext4
 kernel_file=$firecracker_dir/$kernel_file_name

@@ -15,4 +15,9 @@ docker run --detach $RUNSC_ARG  \
     --publish 443:443 --publish 80:80 --publish 22:22 \
     --name gitlab \
     --restart always \
+    --privileged \
+    --ulimit sigpending=62793 \
+    --ulimit nproc=131072 \
+    --ulimit nofile=60000 \
+    --ulimit core=0 \
     gitlab-custom-ee:latest
