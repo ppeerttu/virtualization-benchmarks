@@ -21,19 +21,21 @@ OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-$PLATFORM-fileio.log
 TMPDIR=/tmp/fileio-test
+FILE_SIZE_TOTAL=5G
 
 mkdir -p $TMPDIR
 pushd $TMPDIR
 
 run_test() {
     for ((i=1; i<=$ITERATIONS;i++)); do
-        sysbench fileio run --file-test-mode=seqrewr --time=$TEST_TIME
+        sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqrd --time=$TEST_TIME
+        sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqwr --time=$TEST_TIME
     done
 }
 
 printf "\nPreparing sysbench test...\n"
 
-sysbench fileio prepare
+sysbench fileio prepare --file-total-size=$FILE_SIZE_TOTAL
 
 printf "\nPreparations done. Running tests...\n"
 

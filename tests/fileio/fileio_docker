@@ -16,15 +16,17 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 LOG_FILE=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}fileio.log
+FILE_SIZE_TOTAL=5G
 
-launch_container() {
-    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-test-mode=seqrewr --time=$TEST_TIME
+run_iteration() {
+    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqrd --time=$TEST_TIME
+    docker run --rm $RUNSC_ARG sysbench:latest sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqwr --time=$TEST_TIME
 }
 
 run_test() {
     for ((i=1; i<=$ITERATIONS;i++)); do
         echo "Running iteration $i..."
-        launch_container >> $LOG_FILE
+        run_iteration >> $LOG_FILE
     done
 }
 

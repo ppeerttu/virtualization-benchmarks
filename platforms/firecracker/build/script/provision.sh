@@ -107,5 +107,5 @@ apt-get install -y \
     cppcheck
 
 # Install GitLab and GitLab Runner with the following commands once you have the VM launched
-# EXTERNAL_URL=$GITLAB_URL apt-get install gitlab-ee=13.2.0-ee.0
-# GITLAB_RUNNER_DISABLE_SKEL=true apt-get install gitlab-runner=13.2.4
+# EXTERNAL_URL=$GITLAB_URL sudo apt-get install gitlab-ee=13.2.0-ee.0
+# GITLAB_RUNNER_DISABLE_SKEL=true sudo apt-get install gitlab-runner=13.2.4
