@@ -1,0 +1,3442 @@
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   162.529 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179510 bytes
+HTML transferred:       530000 bytes
+Requests per second:    30.76 [#/sec] (mean)
+Time per request:       325.059 [ms] (mean)
+Time per request:       32.506 [ms] (mean, across all concurrent requests)
+Transfer rate:          31.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2       9
+Processing:    66  323 298.0    249    4845
+Waiting:       65  323 298.0    249    4845
+Total:         67  325 297.9    251    4846
+
+Percentage of the requests served within a certain time (ms)
+  50%    251
+  66%    306
+  75%    342
+  80%    377
+  90%    524
+  95%    717
+  98%   1168
+  99%   1585
+ 100%   4846 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   113.887 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179564 bytes
+HTML transferred:       530000 bytes
+Requests per second:    43.90 [#/sec] (mean)
+Time per request:       683.325 [ms] (mean)
+Time per request:       22.777 [ms] (mean, across all concurrent requests)
+Transfer rate:          44.41 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.5      2      11
+Processing:    35  679 179.3    637    2221
+Waiting:       33  679 179.3    637    2221
+Total:         36  681 179.3    639    2222
+
+Percentage of the requests served within a certain time (ms)
+  50%    639
+  66%    708
+  75%    752
+  80%    785
+  90%    896
+  95%    999
+  98%   1198
+  99%   1315
+ 100%   2222 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   110.687 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179542 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.17 [#/sec] (mean)
+Time per request:       1328.243 [ms] (mean)
+Time per request:       22.137 [ms] (mean, across all concurrent requests)
+Transfer rate:          45.70 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.8      2      12
+Processing:    29 1318 187.2   1298    2288
+Waiting:       27 1318 187.2   1298    2287
+Total:         30 1320 187.1   1300    2289
+
+Percentage of the requests served within a certain time (ms)
+  50%   1300
+  66%   1384
+  75%   1442
+  80%   1481
+  90%   1566
+  95%   1626
+  98%   1701
+  99%   1756
+ 100%   2289 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.732 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179542 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.41 [#/sec] (mean)
+Time per request:       1939.168 [ms] (mean)
+Time per request:       21.546 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.95 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.5      2      18
+Processing:    35 1917 267.4   1889    3018
+Waiting:       32 1917 267.4   1889    3018
+Total:         36 1919 266.8   1891    3020
+
+Percentage of the requests served within a certain time (ms)
+  50%   1891
+  66%   2010
+  75%   2106
+  80%   2155
+  90%   2251
+  95%   2323
+  98%   2416
+  99%   2470
+ 100%   3020 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   106.315 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179551 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.03 [#/sec] (mean)
+Time per request:       2551.564 [ms] (mean)
+Time per request:       21.263 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.58 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.9      2      28
+Processing:    38 2517 353.7   2458    3601
+Waiting:       33 2517 353.7   2458    3601
+Total:         39 2519 352.7   2460    3603
+
+Percentage of the requests served within a certain time (ms)
+  50%   2460
+  66%   2631
+  75%   2759
+  80%   2833
+  90%   2974
+  95%   3070
+  98%   3169
+  99%   3227
+ 100%   3603 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   106.228 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179561 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.07 [#/sec] (mean)
+Time per request:       3186.842 [ms] (mean)
+Time per request:       21.246 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.62 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.9      2      27
+Processing:    31 3136 455.8   3067    4540
+Waiting:       27 3136 455.8   3067    4540
+Total:         32 3138 454.6   3069    4542
+
+Percentage of the requests served within a certain time (ms)
+  50%   3069
+  66%   3268
+  75%   3423
+  80%   3505
+  90%   3656
+  95%   3776
+  98%   3968
+  99%   4087
+ 100%   4542 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   107.002 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179537 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.73 [#/sec] (mean)
+Time per request:       3852.074 [ms] (mean)
+Time per request:       21.400 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.27 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   4.2      2      39
+Processing:    38 3772 512.4   3750    5107
+Waiting:       31 3771 512.5   3750    5107
+Total:         40 3774 510.4   3751    5108
+
+Percentage of the requests served within a certain time (ms)
+  50%   3751
+  66%   3933
+  75%   4089
+  80%   4168
+  90%   4348
+  95%   4473
+  98%   4551
+  99%   4606
+ 100%   5108 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   108.355 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179562 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.14 [#/sec] (mean)
+Time per request:       4334.193 [ms] (mean)
+Time per request:       21.671 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.68 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.5      2      36
+Processing:    45 4252 602.2   4259    5755
+Waiting:       39 4252 602.2   4259    5755
+Total:         47 4255 600.2   4261    5757
+
+Percentage of the requests served within a certain time (ms)
+  50%   4261
+  66%   4487
+  75%   4609
+  80%   4681
+  90%   4837
+  95%   4950
+  98%   5174
+  99%   5259
+ 100%   5757 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   109.618 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179545 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.61 [#/sec] (mean)
+Time per request:       219.236 [ms] (mean)
+Time per request:       21.924 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.14 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2      10
+Processing:    32  217  96.5    192     934
+Waiting:       31  217  96.5    192     934
+Total:         33  219  96.5    193     936
+
+Percentage of the requests served within a certain time (ms)
+  50%    193
+  66%    217
+  75%    236
+  80%    251
+  90%    310
+  95%    459
+  98%    546
+  99%    595
+ 100%    936 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   107.887 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179492 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.34 [#/sec] (mean)
+Time per request:       647.320 [ms] (mean)
+Time per request:       21.577 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.88 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2       6
+Processing:    31  644 151.2    596    1514
+Waiting:       30  644 151.2    596    1514
+Total:         33  646 151.2    597    1515
+
+Percentage of the requests served within a certain time (ms)
+  50%    597
+  66%    670
+  75%    740
+  80%    780
+  90%    861
+  95%    944
+  98%   1028
+  99%   1085
+ 100%   1515 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   107.227 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179547 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.63 [#/sec] (mean)
+Time per request:       1286.729 [ms] (mean)
+Time per request:       21.445 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.17 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.5      2      23
+Processing:    40 1274 225.8   1260    2323
+Waiting:       37 1274 225.8   1260    2322
+Total:         42 1276 225.6   1262    2324
+
+Percentage of the requests served within a certain time (ms)
+  50%   1262
+  66%   1365
+  75%   1417
+  80%   1454
+  90%   1568
+  95%   1686
+  98%   1788
+  99%   1828
+ 100%   2324 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   106.191 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179533 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.08 [#/sec] (mean)
+Time per request:       1911.444 [ms] (mean)
+Time per request:       21.238 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.63 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.5      2      25
+Processing:    43 1894 266.9   1872    2880
+Waiting:       38 1894 266.9   1872    2880
+Total:         45 1896 266.3   1874    2881
+
+Percentage of the requests served within a certain time (ms)
+  50%   1874
+  66%   1969
+  75%   2064
+  80%   2114
+  90%   2235
+  95%   2311
+  98%   2401
+  99%   2473
+ 100%   2881 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   108.079 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179569 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.26 [#/sec] (mean)
+Time per request:       2593.908 [ms] (mean)
+Time per request:       21.616 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.5      2      26
+Processing:    32 2559 439.2   2448    4522
+Waiting:       28 2559 439.2   2447    4522
+Total:         33 2561 438.5   2449    4523
+
+Percentage of the requests served within a certain time (ms)
+  50%   2449
+  66%   2659
+  75%   2800
+  80%   2890
+  90%   3140
+  95%   3318
+  98%   3542
+  99%   3780
+ 100%   4523 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   106.425 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179533 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.98 [#/sec] (mean)
+Time per request:       3192.746 [ms] (mean)
+Time per request:       21.285 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.53 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.7      2      33
+Processing:    40 3147 431.3   3130    4264
+Waiting:       33 3147 431.3   3130    4264
+Total:         42 3149 429.7   3132    4266
+
+Percentage of the requests served within a certain time (ms)
+  50%   3132
+  66%   3293
+  75%   3423
+  80%   3493
+  90%   3638
+  95%   3743
+  98%   3848
+  99%   3970
+ 100%   4266 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   105.502 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179558 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.39 [#/sec] (mean)
+Time per request:       3798.071 [ms] (mean)
+Time per request:       21.100 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.94 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   6.4      2      50
+Processing:    65 3720 554.9   3645    5464
+Waiting:       57 3720 554.9   3645    5464
+Total:         67 3723 551.8   3647    5466
+
+Percentage of the requests served within a certain time (ms)
+  50%   3647
+  66%   3851
+  75%   4064
+  80%   4150
+  90%   4339
+  95%   4473
+  98%   4815
+  99%   4964
+ 100%   5466 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   106.380 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179546 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.00 [#/sec] (mean)
+Time per request:       4255.200 [ms] (mean)
+Time per request:       21.276 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.55 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.6      2      38
+Processing:    41 4170 601.1   4188    5253
+Waiting:       35 4170 601.1   4188    5253
+Total:         42 4173 598.8   4189    5255
+
+Percentage of the requests served within a certain time (ms)
+  50%   4189
+  66%   4385
+  75%   4555
+  80%   4635
+  90%   4759
+  95%   4833
+  98%   4931
+  99%   5099
+ 100%   5255 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   106.279 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179540 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.05 [#/sec] (mean)
+Time per request:       212.559 [ms] (mean)
+Time per request:       21.256 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.59 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.3      2       8
+Processing:    28  211  85.0    191    1091
+Waiting:       28  210  85.0    191    1091
+Total:         29  212  85.0    192    1093
+
+Percentage of the requests served within a certain time (ms)
+  50%    192
+  66%    216
+  75%    233
+  80%    244
+  90%    285
+  95%    364
+  98%    520
+  99%    563
+ 100%   1093 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   106.707 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179523 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.86 [#/sec] (mean)
+Time per request:       640.244 [ms] (mean)
+Time per request:       21.341 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.40 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.9      2      58
+Processing:    30  637 131.0    619    1354
+Waiting:       29  637 131.0    619    1353
+Total:         31  639 131.0    621    1356
+
+Percentage of the requests served within a certain time (ms)
+  50%    621
+  66%    672
+  75%    708
+  80%    732
+  90%    814
+  95%    886
+  98%    973
+  99%   1034
+ 100%   1356 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   106.605 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179561 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.90 [#/sec] (mean)
+Time per request:       1279.258 [ms] (mean)
+Time per request:       21.321 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.45 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.0      2      16
+Processing:    29 1272 242.0   1262    2317
+Waiting:       27 1272 242.0   1262    2317
+Total:         30 1273 241.8   1264    2319
+
+Percentage of the requests served within a certain time (ms)
+  50%   1264
+  66%   1352
+  75%   1403
+  80%   1444
+  90%   1571
+  95%   1692
+  98%   1894
+  99%   2016
+ 100%   2319 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   105.814 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179530 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.25 [#/sec] (mean)
+Time per request:       1904.648 [ms] (mean)
+Time per request:       21.163 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.6      2      21
+Processing:    45 1887 291.2   1883    3425
+Waiting:       42 1887 291.2   1883    3425
+Total:         47 1889 290.9   1884    3426
+
+Percentage of the requests served within a certain time (ms)
+  50%   1884
+  66%   1965
+  75%   2023
+  80%   2062
+  90%   2259
+  95%   2375
+  98%   2559
+  99%   2698
+ 100%   3426 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   108.780 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179540 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.96 [#/sec] (mean)
+Time per request:       2610.732 [ms] (mean)
+Time per request:       21.756 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.4      2      23
+Processing:    35 2578 345.1   2573    3571
+Waiting:       29 2578 345.2   2573    3570
+Total:         36 2580 344.2   2575    3572
+
+Percentage of the requests served within a certain time (ms)
+  50%   2575
+  66%   2702
+  75%   2796
+  80%   2857
+  90%   2990
+  95%   3075
+  98%   3173
+  99%   3294
+ 100%   3572 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   114.515 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179569 bytes
+HTML transferred:       530000 bytes
+Requests per second:    43.66 [#/sec] (mean)
+Time per request:       3435.448 [ms] (mean)
+Time per request:       22.903 [ms] (mean, across all concurrent requests)
+Transfer rate:          44.17 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   4.3      2      44
+Processing:    42 3384 758.7   3220    7673
+Waiting:       35 3384 758.7   3220    7673
+Total:         43 3386 757.4   3223    7675
+
+Percentage of the requests served within a certain time (ms)
+  50%   3223
+  66%   3421
+  75%   3547
+  80%   3637
+  90%   4247
+  95%   5282
+  98%   5648
+  99%   5812
+ 100%   7675 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   106.764 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179542 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.83 [#/sec] (mean)
+Time per request:       3843.495 [ms] (mean)
+Time per request:       21.353 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.38 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   5.7      2      49
+Processing:    31 3765 560.3   3711    5389
+Waiting:       27 3765 560.3   3711    5389
+Total:         33 3768 557.7   3713    5391
+
+Percentage of the requests served within a certain time (ms)
+  50%   3713
+  66%   3896
+  75%   4110
+  80%   4193
+  90%   4377
+  95%   4548
+  98%   4830
+  99%   5010
+ 100%   5391 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   105.992 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179543 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.17 [#/sec] (mean)
+Time per request:       4239.697 [ms] (mean)
+Time per request:       21.198 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.72 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.8      2      38
+Processing:    35 4156 637.7   4171    5806
+Waiting:       29 4155 637.7   4171    5806
+Total:         36 4158 635.3   4173    5807
+
+Percentage of the requests served within a certain time (ms)
+  50%   4173
+  66%   4421
+  75%   4525
+  80%   4592
+  90%   4753
+  95%   4968
+  98%   5112
+  99%   5243
+ 100%   5807 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   107.972 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179524 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.31 [#/sec] (mean)
+Time per request:       215.944 [ms] (mean)
+Time per request:       21.594 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.85 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.3      2       8
+Processing:    34  214  90.4    192    1017
+Waiting:       33  214  90.4    191    1017
+Total:         36  216  90.4    193    1018
+
+Percentage of the requests served within a certain time (ms)
+  50%    193
+  66%    217
+  75%    235
+  80%    249
+  90%    293
+  95%    407
+  98%    528
+  99%    583
+ 100%   1018 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   107.850 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179569 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.36 [#/sec] (mean)
+Time per request:       647.100 [ms] (mean)
+Time per request:       21.570 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.90 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.5      2      11
+Processing:    29  644 141.9    615    1398
+Waiting:       28  644 141.9    615    1398
+Total:         30  645 141.9    616    1399
+
+Percentage of the requests served within a certain time (ms)
+  50%    616
+  66%    682
+  75%    722
+  80%    752
+  90%    846
+  95%    918
+  98%    992
+  99%   1056
+ 100%   1399 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   105.766 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179513 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.27 [#/sec] (mean)
+Time per request:       1269.196 [ms] (mean)
+Time per request:       21.153 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.82 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.5      2      24
+Processing:    34 1259 200.1   1222    2217
+Waiting:       31 1259 200.1   1221    2217
+Total:         35 1260 199.9   1223    2219
+
+Percentage of the requests served within a certain time (ms)
+  50%   1223
+  66%   1306
+  75%   1365
+  80%   1404
+  90%   1520
+  95%   1639
+  98%   1773
+  99%   1834
+ 100%   2219 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.431 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179526 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.54 [#/sec] (mean)
+Time per request:       1933.755 [ms] (mean)
+Time per request:       21.486 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.08 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.5      2      16
+Processing:    41 1918 281.3   1893    3009
+Waiting:       38 1918 281.3   1893    3009
+Total:         43 1920 280.8   1894    3010
+
+Percentage of the requests served within a certain time (ms)
+  50%   1894
+  66%   2007
+  75%   2109
+  80%   2157
+  90%   2292
+  95%   2373
+  98%   2454
+  99%   2513
+ 100%   3010 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   107.841 seconds
+Complete requests:      5000
+Failed requests:        1
+   (Connect: 1, Receive: 0, Length: 0, Exceptions: 0)
+Non-2xx responses:      5000
+Total transferred:      5179538 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.36 [#/sec] (mean)
+Time per request:       2588.185 [ms] (mean)
+Time per request:       21.568 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.90 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.3      1      26
+Processing:    34 2552 349.9   2495    3714
+Waiting:       28 2552 349.9   2495    3714
+Total:         36 2553 349.4   2496    3715
+
+Percentage of the requests served within a certain time (ms)
+  50%   2496
+  66%   2634
+  75%   2746
+  80%   2809
+  90%   3004
+  95%   3210
+  98%   3350
+  99%   3407
+ 100%   3715 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   108.221 seconds
+Complete requests:      5000
+Failed requests:        1
+   (Connect: 1, Receive: 0, Length: 0, Exceptions: 0)
+Non-2xx responses:      5000
+Total transferred:      5179537 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.20 [#/sec] (mean)
+Time per request:       3246.637 [ms] (mean)
+Time per request:       21.644 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.5      1      33
+Processing:    40 3203 441.1   3179    4660
+Waiting:       34 3203 441.1   3179    4660
+Total:         41 3205 439.3   3181    4662
+
+Percentage of the requests served within a certain time (ms)
+  50%   3181
+  66%   3363
+  75%   3489
+  80%   3541
+  90%   3660
+  95%   3799
+  98%   3941
+  99%   4055
+ 100%   4662 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   106.593 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179514 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.91 [#/sec] (mean)
+Time per request:       3837.346 [ms] (mean)
+Time per request:       21.319 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.45 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   5.1      2      45
+Processing:    39 3762 496.9   3762    4899
+Waiting:       31 3761 496.9   3762    4899
+Total:         40 3764 494.9   3764    4900
+
+Percentage of the requests served within a certain time (ms)
+  50%   3764
+  66%   3938
+  75%   4036
+  80%   4106
+  90%   4312
+  95%   4455
+  98%   4567
+  99%   4701
+ 100%   4900 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   106.052 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179524 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.15 [#/sec] (mean)
+Time per request:       4242.098 [ms] (mean)
+Time per request:       21.210 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   7.6      2      51
+Processing:    59 4163 612.5   4162    5426
+Waiting:       34 4163 612.5   4162    5426
+Total:         62 4166 607.9   4164    5428
+
+Percentage of the requests served within a certain time (ms)
+  50%   4164
+  66%   4400
+  75%   4531
+  80%   4628
+  90%   4809
+  95%   4926
+  98%   5057
+  99%   5175
+ 100%   5428 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   108.231 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179516 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.20 [#/sec] (mean)
+Time per request:       216.462 [ms] (mean)
+Time per request:       21.646 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.73 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.3      2       6
+Processing:    28  215  90.2    192     907
+Waiting:       28  214  90.2    192     907
+Total:         30  216  90.2    194     909
+
+Percentage of the requests served within a certain time (ms)
+  50%    194
+  66%    217
+  75%    234
+  80%    246
+  90%    295
+  95%    439
+  98%    530
+  99%    578
+ 100%    909 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   105.589 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179535 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.35 [#/sec] (mean)
+Time per request:       633.533 [ms] (mean)
+Time per request:       21.118 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.90 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.5      2      11
+Processing:    31  630 139.3    603    1412
+Waiting:       30  630 139.3    603    1411
+Total:         33  632 139.3    605    1414
+
+Percentage of the requests served within a certain time (ms)
+  50%    605
+  66%    672
+  75%    708
+  80%    734
+  90%    827
+  95%    891
+  98%    985
+  99%   1048
+ 100%   1414 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   107.517 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179560 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.50 [#/sec] (mean)
+Time per request:       1290.210 [ms] (mean)
+Time per request:       21.503 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.05 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.2      1      18
+Processing:    54 1281 229.0   1269    2559
+Waiting:       50 1281 229.0   1269    2558
+Total:         55 1283 228.8   1271    2560
+
+Percentage of the requests served within a certain time (ms)
+  50%   1271
+  66%   1356
+  75%   1412
+  80%   1457
+  90%   1582
+  95%   1699
+  98%   1811
+  99%   1912
+ 100%   2560 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.248 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179517 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.62 [#/sec] (mean)
+Time per request:       1930.458 [ms] (mean)
+Time per request:       21.450 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.16 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.3      2      15
+Processing:    32 1913 286.2   1866    3058
+Waiting:       30 1913 286.2   1866    3058
+Total:         34 1915 285.8   1868    3059
+
+Percentage of the requests served within a certain time (ms)
+  50%   1868
+  66%   2021
+  75%   2109
+  80%   2162
+  90%   2284
+  95%   2373
+  98%   2456
+  99%   2525
+ 100%   3059 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   106.022 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179501 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.16 [#/sec] (mean)
+Time per request:       2544.524 [ms] (mean)
+Time per request:       21.204 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.71 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.7      2      29
+Processing:    34 2516 352.4   2473    4039
+Waiting:       29 2516 352.4   2473    4038
+Total:         36 2518 351.3   2475    4040
+
+Percentage of the requests served within a certain time (ms)
+  50%   2475
+  66%   2616
+  75%   2734
+  80%   2799
+  90%   2931
+  95%   3028
+  98%   3252
+  99%   3470
+ 100%   4040 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   106.846 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179545 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.80 [#/sec] (mean)
+Time per request:       3205.384 [ms] (mean)
+Time per request:       21.369 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.34 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   4.4      2      40
+Processing:    33 3149 430.3   3114    4466
+Waiting:       28 3149 430.3   3114    4466
+Total:         35 3151 428.5   3116    4468
+
+Percentage of the requests served within a certain time (ms)
+  50%   3116
+  66%   3291
+  75%   3414
+  80%   3472
+  90%   3616
+  95%   3742
+  98%   3938
+  99%   4079
+ 100%   4468 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   106.899 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179567 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.77 [#/sec] (mean)
+Time per request:       3848.374 [ms] (mean)
+Time per request:       21.380 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.32 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   4.1      2      38
+Processing:    37 3782 551.7   3831    5014
+Waiting:       32 3782 551.7   3831    5014
+Total:         38 3785 549.9   3833    5016
+
+Percentage of the requests served within a certain time (ms)
+  50%   3833
+  66%   4022
+  75%   4124
+  80%   4179
+  90%   4314
+  95%   4411
+  98%   4556
+  99%   4637
+ 100%   5016 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   105.400 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179535 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.44 [#/sec] (mean)
+Time per request:       4216.012 [ms] (mean)
+Time per request:       21.080 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.99 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   6.0      2      47
+Processing:    44 4122 602.4   4081    5967
+Waiting:       35 4122 602.4   4080    5967
+Total:         45 4125 599.7   4082    5971
+
+Percentage of the requests served within a certain time (ms)
+  50%   4082
+  66%   4304
+  75%   4482
+  80%   4571
+  90%   4775
+  95%   4932
+  98%   5242
+  99%   5406
+ 100%   5971 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   107.382 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179517 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.56 [#/sec] (mean)
+Time per request:       214.765 [ms] (mean)
+Time per request:       21.476 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.10 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2      10
+Processing:    28  213  88.9    192    1038
+Waiting:       27  213  88.9    192    1038
+Total:         29  214  88.9    194    1040
+
+Percentage of the requests served within a certain time (ms)
+  50%    194
+  66%    216
+  75%    233
+  80%    245
+  90%    286
+  95%    405
+  98%    530
+  99%    572
+ 100%   1040 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   106.316 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179572 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.03 [#/sec] (mean)
+Time per request:       637.897 [ms] (mean)
+Time per request:       21.263 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.58 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2       7
+Processing:    43  634 150.0    585    1508
+Waiting:       41  634 150.0    585    1508
+Total:         45  636 150.0    587    1510
+
+Percentage of the requests served within a certain time (ms)
+  50%    587
+  66%    658
+  75%    728
+  80%    775
+  90%    857
+  95%    919
+  98%   1003
+  99%   1070
+ 100%   1510 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   107.699 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179552 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.43 [#/sec] (mean)
+Time per request:       1292.383 [ms] (mean)
+Time per request:       21.540 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.97 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.6      2      10
+Processing:    29 1283 216.5   1272    2836
+Waiting:       27 1283 216.5   1272    2836
+Total:         30 1285 216.4   1274    2838
+
+Percentage of the requests served within a certain time (ms)
+  50%   1274
+  66%   1354
+  75%   1407
+  80%   1442
+  90%   1546
+  95%   1628
+  98%   1779
+  99%   1968
+ 100%   2838 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.932 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179569 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.33 [#/sec] (mean)
+Time per request:       1942.773 [ms] (mean)
+Time per request:       21.586 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.86 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.6      2      17
+Processing:    29 1922 294.0   1903    3090
+Waiting:       27 1922 294.0   1903    3090
+Total:         31 1924 293.7   1905    3092
+
+Percentage of the requests served within a certain time (ms)
+  50%   1905
+  66%   2046
+  75%   2117
+  80%   2159
+  90%   2279
+  95%   2395
+  98%   2574
+  99%   2660
+ 100%   3092 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   106.608 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179536 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.90 [#/sec] (mean)
+Time per request:       2558.594 [ms] (mean)
+Time per request:       21.322 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.45 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.3      2      25
+Processing:    31 2521 379.1   2451    3932
+Waiting:       27 2521 379.1   2450    3932
+Total:         33 2524 378.3   2452    3934
+
+Percentage of the requests served within a certain time (ms)
+  50%   2452
+  66%   2580
+  75%   2714
+  80%   2822
+  90%   3010
+  95%   3116
+  98%   3247
+  99%   3467
+ 100%   3934 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   106.576 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179562 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.92 [#/sec] (mean)
+Time per request:       3197.270 [ms] (mean)
+Time per request:       21.315 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.46 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.2      2      26
+Processing:    41 3151 497.0   3063    4769
+Waiting:       34 3151 497.0   3063    4769
+Total:         42 3154 495.5   3064    4771
+
+Percentage of the requests served within a certain time (ms)
+  50%   3064
+  66%   3278
+  75%   3451
+  80%   3562
+  90%   3731
+  95%   3958
+  98%   4179
+  99%   4281
+ 100%   4771 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   107.978 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179561 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.31 [#/sec] (mean)
+Time per request:       3887.217 [ms] (mean)
+Time per request:       21.596 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.84 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   5.1      2      43
+Processing:    37 3817 575.3   3741    5490
+Waiting:       30 3817 575.3   3741    5490
+Total:         38 3820 573.1   3743    5492
+
+Percentage of the requests served within a certain time (ms)
+  50%   3743
+  66%   3990
+  75%   4172
+  80%   4245
+  90%   4440
+  95%   4690
+  98%   4939
+  99%   5086
+ 100%   5492 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   107.434 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179517 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.54 [#/sec] (mean)
+Time per request:       4297.379 [ms] (mean)
+Time per request:       21.487 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.08 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.5      2      32
+Processing:    43 4212 640.3   4190    5983
+Waiting:       35 4212 640.3   4190    5983
+Total:         45 4215 638.0   4192    5985
+
+Percentage of the requests served within a certain time (ms)
+  50%   4192
+  66%   4453
+  75%   4578
+  80%   4667
+  90%   4844
+  95%   5053
+  98%   5288
+  99%   5381
+ 100%   5985 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   107.421 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179534 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.55 [#/sec] (mean)
+Time per request:       214.843 [ms] (mean)
+Time per request:       21.484 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.09 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2      11
+Processing:    81  213  87.6    192     901
+Waiting:       80  213  87.6    192     901
+Total:         82  214  87.6    194     903
+
+Percentage of the requests served within a certain time (ms)
+  50%    194
+  66%    216
+  75%    231
+  80%    242
+  90%    285
+  95%    397
+  98%    526
+  99%    577
+ 100%    903 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   108.389 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179569 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.13 [#/sec] (mean)
+Time per request:       650.336 [ms] (mean)
+Time per request:       21.678 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.67 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2       7
+Processing:    30  646 146.2    612    1764
+Waiting:       29  646 146.2    612    1764
+Total:         31  648 146.3    614    1766
+
+Percentage of the requests served within a certain time (ms)
+  50%    614
+  66%    671
+  75%    719
+  80%    750
+  90%    850
+  95%    916
+  98%   1013
+  99%   1125
+ 100%   1766 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   108.434 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179548 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.11 [#/sec] (mean)
+Time per request:       1301.209 [ms] (mean)
+Time per request:       21.687 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.65 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.6      2      12
+Processing:    34 1289 232.9   1287    2569
+Waiting:       31 1289 232.9   1287    2569
+Total:         35 1291 232.9   1289    2571
+
+Percentage of the requests served within a certain time (ms)
+  50%   1289
+  66%   1387
+  75%   1449
+  80%   1484
+  90%   1574
+  95%   1649
+  98%   1758
+  99%   1959
+ 100%   2571 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.333 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179559 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.58 [#/sec] (mean)
+Time per request:       1931.998 [ms] (mean)
+Time per request:       21.467 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.13 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.4      2      17
+Processing:    32 1911 280.9   1878    3127
+Waiting:       28 1911 280.9   1878    3126
+Total:         33 1913 280.6   1880    3128
+
+Percentage of the requests served within a certain time (ms)
+  50%   1880
+  66%   2016
+  75%   2101
+  80%   2142
+  90%   2263
+  95%   2393
+  98%   2522
+  99%   2588
+ 100%   3128 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   107.471 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179568 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.52 [#/sec] (mean)
+Time per request:       2579.298 [ms] (mean)
+Time per request:       21.494 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.07 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.6      2      32
+Processing:    32 2547 337.8   2534    3751
+Waiting:       29 2547 337.8   2534    3751
+Total:         34 2549 337.1   2536    3753
+
+Percentage of the requests served within a certain time (ms)
+  50%   2536
+  66%   2662
+  75%   2747
+  80%   2803
+  90%   2948
+  95%   3030
+  98%   3105
+  99%   3174
+ 100%   3753 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   107.682 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179556 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.43 [#/sec] (mean)
+Time per request:       3230.459 [ms] (mean)
+Time per request:       21.536 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.97 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.5      2      25
+Processing:    32 3174 408.6   3154    4169
+Waiting:       28 3174 408.6   3154    4169
+Total:         34 3177 407.8   3155    4171
+
+Percentage of the requests served within a certain time (ms)
+  50%   3155
+  66%   3330
+  75%   3462
+  80%   3515
+  90%   3618
+  95%   3687
+  98%   3813
+  99%   3912
+ 100%   4171 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   107.101 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179540 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.69 [#/sec] (mean)
+Time per request:       3855.619 [ms] (mean)
+Time per request:       21.420 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.23 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.2      2      26
+Processing:    41 3792 548.3   3791    5561
+Waiting:       35 3792 548.3   3791    5561
+Total:         42 3794 546.6   3793    5563
+
+Percentage of the requests served within a certain time (ms)
+  50%   3793
+  66%   3977
+  75%   4099
+  80%   4159
+  90%   4333
+  95%   4545
+  98%   4898
+  99%   4972
+ 100%   5563 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   108.166 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179546 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.23 [#/sec] (mean)
+Time per request:       4326.631 [ms] (mean)
+Time per request:       21.633 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.76 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   3.8      2      31
+Processing:    34 4228 573.4   4251    5374
+Waiting:       28 4228 573.4   4251    5374
+Total:         36 4230 571.7   4253    5376
+
+Percentage of the requests served within a certain time (ms)
+  50%   4253
+  66%   4502
+  75%   4618
+  80%   4664
+  90%   4789
+  95%   4919
+  98%   5047
+  99%   5103
+ 100%   5376 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   109.607 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179560 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.62 [#/sec] (mean)
+Time per request:       219.214 [ms] (mean)
+Time per request:       21.921 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.15 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2      10
+Processing:    59  217  95.6    193    1155
+Waiting:       58  217  95.6    193    1155
+Total:         60  219  95.6    194    1157
+
+Percentage of the requests served within a certain time (ms)
+  50%    194
+  66%    217
+  75%    234
+  80%    246
+  90%    305
+  95%    460
+  98%    544
+  99%    585
+ 100%   1157 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   110.449 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179504 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.27 [#/sec] (mean)
+Time per request:       662.693 [ms] (mean)
+Time per request:       22.090 [ms] (mean, across all concurrent requests)
+Transfer rate:          45.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2      10
+Processing:    32  659 143.2    635    1770
+Waiting:       31  659 143.2    635    1770
+Total:         33  661 143.2    637    1772
+
+Percentage of the requests served within a certain time (ms)
+  50%    637
+  66%    692
+  75%    726
+  80%    757
+  90%    860
+  95%    933
+  98%   1017
+  99%   1076
+ 100%   1772 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   108.101 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179521 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.25 [#/sec] (mean)
+Time per request:       1297.214 [ms] (mean)
+Time per request:       21.620 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.79 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.7      2       9
+Processing:    29 1288 198.2   1280    2181
+Waiting:       27 1288 198.2   1280    2181
+Total:         31 1290 198.0   1282    2183
+
+Percentage of the requests served within a certain time (ms)
+  50%   1282
+  66%   1356
+  75%   1403
+  80%   1443
+  90%   1544
+  95%   1621
+  98%   1711
+  99%   1786
+ 100%   2183 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   108.521 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179527 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.07 [#/sec] (mean)
+Time per request:       1953.380 [ms] (mean)
+Time per request:       21.704 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.2      2      22
+Processing:    31 1933 271.7   1918    3033
+Waiting:       29 1933 271.7   1918    3033
+Total:         33 1935 271.3   1920    3035
+
+Percentage of the requests served within a certain time (ms)
+  50%   1920
+  66%   2024
+  75%   2095
+  80%   2148
+  90%   2277
+  95%   2357
+  98%   2422
+  99%   2482
+ 100%   3035 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   109.061 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179568 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.85 [#/sec] (mean)
+Time per request:       2617.468 [ms] (mean)
+Time per request:       21.812 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.38 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.2      2      24
+Processing:    31 2577 371.8   2531    3913
+Waiting:       27 2577 371.8   2531    3913
+Total:         33 2579 371.1   2533    3915
+
+Percentage of the requests served within a certain time (ms)
+  50%   2533
+  66%   2663
+  75%   2795
+  80%   2857
+  90%   3031
+  95%   3184
+  98%   3320
+  99%   3381
+ 100%   3915 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   107.098 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179559 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.69 [#/sec] (mean)
+Time per request:       3212.931 [ms] (mean)
+Time per request:       21.420 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.23 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.4      2      24
+Processing:    36 3171 479.8   3102    4775
+Waiting:       29 3171 479.8   3102    4775
+Total:         38 3173 478.6   3103    4777
+
+Percentage of the requests served within a certain time (ms)
+  50%   3103
+  66%   3315
+  75%   3467
+  80%   3544
+  90%   3714
+  95%   3905
+  98%   4113
+  99%   4230
+ 100%   4777 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   107.865 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179537 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.35 [#/sec] (mean)
+Time per request:       3883.136 [ms] (mean)
+Time per request:       21.573 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.89 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.5      2      47
+Processing:    41 3808 542.9   3774    5751
+Waiting:       33 3808 542.9   3774    5751
+Total:         42 3811 541.6   3776    5753
+
+Percentage of the requests served within a certain time (ms)
+  50%   3776
+  66%   3996
+  75%   4114
+  80%   4193
+  90%   4409
+  95%   4610
+  98%   4845
+  99%   4954
+ 100%   5753 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   107.967 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179517 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.31 [#/sec] (mean)
+Time per request:       4318.665 [ms] (mean)
+Time per request:       21.593 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.85 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.4      2      37
+Processing:    32 4235 668.3   4164    5973
+Waiting:       27 4235 668.3   4164    5973
+Total:         33 4238 665.9   4166    5975
+
+Percentage of the requests served within a certain time (ms)
+  50%   4166
+  66%   4440
+  75%   4612
+  80%   4726
+  90%   4999
+  95%   5252
+  98%   5384
+  99%   5441
+ 100%   5975 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   109.128 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179530 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.82 [#/sec] (mean)
+Time per request:       218.255 [ms] (mean)
+Time per request:       21.826 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.35 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.3      2       6
+Processing:    45  216  89.5    195     876
+Waiting:       45  216  89.5    195     875
+Total:         47  218  89.5    197     877
+
+Percentage of the requests served within a certain time (ms)
+  50%    197
+  66%    219
+  75%    236
+  80%    248
+  90%    293
+  95%    418
+  98%    532
+  99%    581
+ 100%    877 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   107.731 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179574 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.41 [#/sec] (mean)
+Time per request:       646.386 [ms] (mean)
+Time per request:       21.546 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.95 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.4      2       7
+Processing:    57  643 137.6    615    1308
+Waiting:       55  643 137.6    615    1308
+Total:         58  645 137.6    617    1310
+
+Percentage of the requests served within a certain time (ms)
+  50%    617
+  66%    681
+  75%    717
+  80%    742
+  90%    833
+  95%    905
+  98%   1001
+  99%   1072
+ 100%   1310 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   107.191 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179534 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.65 [#/sec] (mean)
+Time per request:       1286.296 [ms] (mean)
+Time per request:       21.438 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.19 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.7      2      13
+Processing:    32 1278 207.1   1285    2144
+Waiting:       30 1278 207.1   1285    2144
+Total:         33 1280 207.0   1287    2145
+
+Percentage of the requests served within a certain time (ms)
+  50%   1287
+  66%   1368
+  75%   1422
+  80%   1457
+  90%   1543
+  95%   1614
+  98%   1697
+  99%   1744
+ 100%   2145 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   108.662 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179541 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.01 [#/sec] (mean)
+Time per request:       1955.911 [ms] (mean)
+Time per request:       21.732 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.55 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.3      2      18
+Processing:    33 1937 340.0   1874    4001
+Waiting:       30 1937 340.0   1874    4001
+Total:         34 1939 339.7   1876    4002
+
+Percentage of the requests served within a certain time (ms)
+  50%   1876
+  66%   1981
+  75%   2074
+  80%   2122
+  90%   2304
+  95%   2573
+  98%   2911
+  99%   3118
+ 100%   4002 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   108.920 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179530 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.91 [#/sec] (mean)
+Time per request:       2614.073 [ms] (mean)
+Time per request:       21.784 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.44 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.2      2      22
+Processing:    33 2578 352.2   2557    3801
+Waiting:       29 2578 352.2   2557    3801
+Total:         34 2580 351.3   2559    3803
+
+Percentage of the requests served within a certain time (ms)
+  50%   2559
+  66%   2700
+  75%   2786
+  80%   2835
+  90%   2963
+  95%   3083
+  98%   3261
+  99%   3344
+ 100%   3803 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   105.502 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179506 bytes
+HTML transferred:       530000 bytes
+Requests per second:    47.39 [#/sec] (mean)
+Time per request:       3165.049 [ms] (mean)
+Time per request:       21.100 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.94 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.5      2      31
+Processing:    30 3120 450.5   3057    4963
+Waiting:       26 3120 450.5   3057    4963
+Total:         31 3123 449.2   3059    4964
+
+Percentage of the requests served within a certain time (ms)
+  50%   3059
+  66%   3216
+  75%   3342
+  80%   3426
+  90%   3614
+  95%   3735
+  98%   4167
+  99%   4390
+ 100%   4964 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   106.675 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179544 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.87 [#/sec] (mean)
+Time per request:       3840.296 [ms] (mean)
+Time per request:       21.335 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.42 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   5.8      2      47
+Processing:    31 3772 542.2   3779    5315
+Waiting:       26 3772 542.2   3779    5315
+Total:         33 3775 539.9   3781    5317
+
+Percentage of the requests served within a certain time (ms)
+  50%   3781
+  66%   4013
+  75%   4116
+  80%   4165
+  90%   4308
+  95%   4479
+  98%   4668
+  99%   4759
+ 100%   5317 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   108.328 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179565 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.16 [#/sec] (mean)
+Time per request:       4333.112 [ms] (mean)
+Time per request:       21.666 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.69 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.3      2      34
+Processing:    36 4242 587.0   4315    5406
+Waiting:       29 4242 587.0   4315    5406
+Total:         37 4244 584.7   4317    5408
+
+Percentage of the requests served within a certain time (ms)
+  50%   4317
+  66%   4507
+  75%   4605
+  80%   4663
+  90%   4788
+  95%   4872
+  98%   4984
+  99%   5039
+ 100%   5408 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      10
+Time taken for tests:   107.549 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179515 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.49 [#/sec] (mean)
+Time per request:       215.099 [ms] (mean)
+Time per request:       21.510 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.03 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.3      2       6
+Processing:    37  213  88.7    192    1016
+Waiting:       37  213  88.7    192    1016
+Total:         39  215  88.7    194    1018
+
+Percentage of the requests served within a certain time (ms)
+  50%    194
+  66%    216
+  75%    232
+  80%    244
+  90%    290
+  95%    397
+  98%    533
+  99%    578
+ 100%   1018 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      30
+Time taken for tests:   110.583 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179556 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.22 [#/sec] (mean)
+Time per request:       663.496 [ms] (mean)
+Time per request:       22.117 [ms] (mean, across all concurrent requests)
+Transfer rate:          45.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   0.5      2      10
+Processing:    32  659 138.4    640    1384
+Waiting:       30  659 138.4    640    1384
+Total:         33  661 138.5    642    1386
+
+Percentage of the requests served within a certain time (ms)
+  50%    642
+  66%    694
+  75%    730
+  80%    756
+  90%    846
+  95%    932
+  98%   1037
+  99%   1082
+ 100%   1386 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      60
+Time taken for tests:   109.956 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179542 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.47 [#/sec] (mean)
+Time per request:       1319.476 [ms] (mean)
+Time per request:       21.991 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.00 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   1.7      2      29
+Processing:   110 1309 243.1   1282    2710
+Waiting:      110 1309 243.1   1282    2710
+Total:        116 1311 242.9   1284    2712
+
+Percentage of the requests served within a certain time (ms)
+  50%   1284
+  66%   1384
+  75%   1446
+  80%   1489
+  90%   1615
+  95%   1771
+  98%   1930
+  99%   1994
+ 100%   2712 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      90
+Time taken for tests:   107.293 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179534 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.60 [#/sec] (mean)
+Time per request:       1931.275 [ms] (mean)
+Time per request:       21.459 [ms] (mean, across all concurrent requests)
+Transfer rate:          47.14 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.9      2      37
+Processing:    36 1910 297.6   1883    3370
+Waiting:       32 1910 297.6   1883    3370
+Total:         38 1912 296.9   1885    3372
+
+Percentage of the requests served within a certain time (ms)
+  50%   1885
+  66%   1991
+  75%   2088
+  80%   2138
+  90%   2278
+  95%   2398
+  98%   2547
+  99%   2677
+ 100%   3372 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      120
+Time taken for tests:   110.805 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179543 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.12 [#/sec] (mean)
+Time per request:       2659.326 [ms] (mean)
+Time per request:       22.161 [ms] (mean, across all concurrent requests)
+Transfer rate:          45.65 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   2.3      2      23
+Processing:    76 2629 400.6   2603    4160
+Waiting:       71 2629 400.6   2603    4160
+Total:         78 2631 399.9   2605    4162
+
+Percentage of the requests served within a certain time (ms)
+  50%   2605
+  66%   2750
+  75%   2835
+  80%   2902
+  90%   3075
+  95%   3274
+  98%   3640
+  99%   3784
+ 100%   4162 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      150
+Time taken for tests:   108.075 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179537 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.26 [#/sec] (mean)
+Time per request:       3242.260 [ms] (mean)
+Time per request:       21.615 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.80 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    2   3.8      2      32
+Processing:    39 3195 450.3   3147    4513
+Waiting:       33 3195 450.3   3147    4513
+Total:         40 3197 448.8   3149    4514
+
+Percentage of the requests served within a certain time (ms)
+  50%   3149
+  66%   3336
+  75%   3482
+  80%   3561
+  90%   3733
+  95%   3908
+  98%   4084
+  99%   4155
+ 100%   4514 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      180
+Time taken for tests:   109.676 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179544 bytes
+HTML transferred:       530000 bytes
+Requests per second:    45.59 [#/sec] (mean)
+Time per request:       3948.331 [ms] (mean)
+Time per request:       21.935 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   4.8      2      43
+Processing:    36 3868 540.3   3881    5115
+Waiting:       30 3867 540.3   3881    5115
+Total:         38 3870 538.6   3884    5117
+
+Percentage of the requests served within a certain time (ms)
+  50%   3884
+  66%   4091
+  75%   4210
+  80%   4258
+  90%   4414
+  95%   4541
+  98%   4688
+  99%   4760
+ 100%   5117 (longest request)
+This is ApacheBench, Version 2.3 <$Revision: 1879490 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking gitlab.custom.local (be patient)
+
+
+Server Software:        nginx
+Server Hostname:        gitlab.custom.local
+Server Port:            80
+
+Document Path:          /
+Document Length:        106 bytes
+
+Concurrency Level:      200
+Time taken for tests:   108.228 seconds
+Complete requests:      5000
+Failed requests:        0
+Non-2xx responses:      5000
+Total transferred:      5179559 bytes
+HTML transferred:       530000 bytes
+Requests per second:    46.20 [#/sec] (mean)
+Time per request:       4329.102 [ms] (mean)
+Time per request:       21.646 [ms] (mean, across all concurrent requests)
+Transfer rate:          46.74 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    3   6.4      2      47
+Processing:    36 4256 636.4   4274    5767
+Waiting:       29 4256 636.4   4274    5767
+Total:         38 4259 633.1   4276    5769
+
+Percentage of the requests served within a certain time (ms)
+  50%   4276
+  66%   4457
+  75%   4596
+  80%   4679
+  90%   4881
+  95%   4994
+  98%   5316
+  99%   5386
+ 100%   5769 (longest request)
