@@ -27,10 +27,17 @@ mkdir -p $TMPDIR
 pushd $TMPDIR
 
 run_test() {
+    test_mode=$1
     for ((i=1; i<=$ITERATIONS;i++)); do
         sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqrd --time=$TEST_TIME
         sysbench fileio run --file-total-size=$FILE_SIZE_TOTAL --file-test-mode=seqwr --time=$TEST_TIME
     done
+}
+
+run_all_tests() {
+    run_test seqrd &> $LOGFILE_NAME
+    printf "Read done. Running write...\n"
+    run_test seqwr &> $LOGFILE_NAME
 }
 
 printf "\nPreparing sysbench test...\n"
@@ -39,7 +46,7 @@ sysbench fileio prepare --file-total-size=$FILE_SIZE_TOTAL
 
 printf "\nPreparations done. Running tests...\n"
 
-run_test &> $LOGFILE_NAME
+run_all_tests
 
 popd
 
