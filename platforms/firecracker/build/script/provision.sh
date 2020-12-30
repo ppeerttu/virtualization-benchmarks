@@ -104,7 +104,8 @@ apt-get install -y \
     build-essential \
     valgrind \
     lcov \
-    cppcheck
+    cppcheck \
+    wget
 
 # Install GitLab and GitLab Runner with the following commands once you have the VM launched
 # EXTERNAL_URL=$GITLAB_URL sudo apt-get install gitlab-ee=13.2.0-ee.0
