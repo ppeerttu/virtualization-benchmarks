@@ -89,7 +89,7 @@ TODO: Describe SQL operations, located at https://github.com/akopytov/sysbench/b
 
 The purpose of this test is to benchmark the platform performance under commonly used application stress. The database test contains a series of OLTP-like queries with different concurrency levels against a MySQL instance. From the set of available test suites, we run [oltp_read_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_only.lua), [oltp_write_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_write_only.lua) and [oltp_read_write](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_write.lua).
 
-**Measurement feature**: CPU performance
+**Measurement feature**: Generic
 
 **Feature metric**: Transactions per second
 
@@ -107,7 +107,7 @@ The purpose of this test is to benchmark the platform performance under commonly
 
 The purpose of this test is to measure the performance of the platform under generic filesystem intensive tasks. This test is conducted with `sysbench`. 
 
-Available `fileio` tests are `seqwr`, `seqrewr`, `seqrd`, `rndrd`, `rndwr` and `rndrw`. In this benchmark, we conduct sequential read (`seqrd`), sequential write (`seqwr`) and random read write (`rndrw`). We use the default sysbench fileio test parameters for conducting the tests.
+Available `fileio` tests are `seqwr`, `seqrewr`, `seqrd`, `rndrd`, `rndwr` and `rndrw`. In this benchmark, we conduct sequential read (`seqrd`) and sequential write (`seqwr`). We use the default sysbench fileio test parameters for conducting the tests, except for total file size we use `5G` instead of the default `2G`.
 
 **Measurement feature**: Filesystem I/O throughput
 
@@ -125,11 +125,11 @@ Available `fileio` tests are `seqwr`, `seqrewr`, `seqrd`, `rndrd`, `rndwr` and `
 
 ### Network
 
-The purpose of this test is to measure the network bandwidth on each of the platforms. The test will be conducted with `iperf3`.
+The purpose of this test is to measure the network bandwidth and jitter on each of the platforms. The test will be conducted with `iperf3`.
 
-**Measurement feature**: Network throughput
+**Measurement feature**: Network throughput and jitter
 
-**Feature metric**: Received bits/s, sent bits/s
+**Feature metric**: Received bits/s, sent bits/s, jitter ms
 
 **Tools**: [iperf3][iperf-site]
 
