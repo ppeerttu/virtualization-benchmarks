@@ -10,6 +10,6 @@ export LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-firecracker-boot-time.log
 
 pushd ../../platforms/firecracker
 
-./launch_vm --boot-time-test
+bash -c "./launch_vm --boot-time-test"
 
 popd

@@ -29,11 +29,15 @@ launch_vm() {
     sh cmd/start_vm.sh
 }
 
+stop_vm() {
+    sh cmd/stop_vm.sh
+}
+
 run_iteration() {
-    launch_vm & time ping_vm
+    launch_vm & (time ping_vm) &>> $LOGFILE_NAME
     # Sleep in between just in case
     sleep 5
-    destroy_vm
+    stop_vm
     # Sleep in between just in case
     sleep 5
 }
@@ -106,16 +110,12 @@ sh cmd/put_machine_config.sh
 
 log_info "Done. Launching vm..."
 
-if [ run_as_boot_time_test == "true" ]; then
-
-    log_info "Boot time test flag detected, running the boot time tests before launching the guest for good..."
-
-    run_test &> $LOGFILE_NAME
-
-    log_info "Tests finished."
+if [ $run_as_boot_time_test == "true" ]; then
+    log_info "Boot time test flag detected, saving time to $LOGFILE_NAME..."
+    launch_vm & (time ping_vm) &>> $LOGFILE_NAME
+else
+    launch_vm
 fi
-
-launch_vm
 
 echo "$uuid" > $guest_id_file
 
