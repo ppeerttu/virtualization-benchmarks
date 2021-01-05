@@ -4,10 +4,6 @@
 source ./config.sh
 set -e
 
-client_ip=172.16.0.2
-host_ip=192.168.1.82
-
-
 log_info "Creating iptables backup to $iptables_backup"
 
 sudo iptables-save > $iptables_backup

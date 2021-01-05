@@ -2,85 +2,14 @@
 
 set -e
 
-ITERATIONS=10
-VM_NAME=fvm
+export ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-firecracker-boot-time.log
-SOCKET=/tmp/firecracker.socket
+export LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-firecracker-boot-time.log
 
-echo "Cleaning previous socket..."
-rm -f $SOCKET
+pushd ../../platforms/firecracker
 
-echo "Launching Firecracker..."
-firecracker --api-sock $SOCKET
+./launch_vm --boot-time-test
 
-# TODO: Check these
-arch=`uname -m`
-kernel_path=$(pwd)"/hello-vmlinux.bin"
-echo "Setting the Kernel to $kernel_path"
-
-curl --unix-socket $SOCKET -i \
-    -X PUT 'http://localhost/boot-source'   \
-    -H 'Accept: application/json'           \
-    -H 'Content-Type: application/json'     \
-    -d "{
-        \"kernel_image_path\": \"${kernel_path}\",
-        \"boot_args\": \"console=ttyS0 reboot=k panic=1 pci=off\"
-    }"
-
-rootfs_path=$(pwd)"/hello-rootfs.ext4"
-echo "Setting the rootfs to $rootfs_path"
-
-curl --unix-socket $SOCKET -i \
-  -X PUT 'http://localhost/drives/rootfs' \
-  -H 'Accept: application/json'           \
-  -H 'Content-Type: application/json'     \
-  -d "{
-        \"drive_id\": \"rootfs\",
-        \"path_on_host\": \"${rootfs_path}\",
-        \"is_root_device\": true,
-        \"is_read_only\": false
-   }"
-
-launch_vm() {
-    curl --unix-socket $SOCKET -i \
-        -X PUT "http://localhost/actions" \
-        -H "accept: application/json" \
-        -H "Content-Type: application/json" \
-        -d "{
-                \"action_type\": \"InstanceStart\"
-            }"
-}
-
-destroy_vm() {
-    curl --unix-socket $SOCKET -i \
-        -X PUT "http://localhost/actions" \
-        -H  "accept: application/json" \
-        -H  "Content-Type: application/json" \
-        -d "{
-                \"action_type\": \"SendCtrlAltDel\"
-        }"
-}
-
-ping_vm() {
-    until ping -c1 $VM_NAME >/dev/null 2>&1; do :; done
-}
-
-run_iteration() {
-    launch_vm & time ping_vm
-    # Sleep in between just in case
-    sleep 5
-    destroy_vm
-    # Sleep in between just in case
-    sleep 5
-}
-
-run_test() {
-    for ((i=1; i<=$ITERATIONS;i++)); do
-        run_iteration
-    done
-}
-
-run_test &> $LOGFILE_NAME
+popd

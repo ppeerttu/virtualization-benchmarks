@@ -2,6 +2,12 @@
 
 source config.sh
 set -e
+
+run_as_boot_time_test="false"
+if [ "$1" == "--boot-time-test" ]; then
+    run_as_boot_time_test="true"
+fi
+
 uuid=$(uuidgen)
 srv_dir=/srv/jailer
 jailer=$firecracker_dir/jailer
@@ -13,6 +19,30 @@ tap_device=$tap_name
 device_mac=$(cat /sys/class/net/$tap_name/address)
 uid=$(id -u)
 gid=$(id -g)
+
+# For the boot time test
+ping_vm() {
+    until ping -c1 $client_ip >/dev/null 2>&1; do :; done
+}
+
+launch_vm() {
+    sh cmd/start_vm.sh
+}
+
+run_iteration() {
+    launch_vm & time ping_vm
+    # Sleep in between just in case
+    sleep 5
+    destroy_vm
+    # Sleep in between just in case
+    sleep 5
+}
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        run_iteration
+    done
+}
 
 sudo mkdir -p $srv_dir
 
@@ -76,8 +106,18 @@ sh cmd/put_machine_config.sh
 
 log_info "Done. Launching vm..."
 
-sh cmd/start_vm.sh
+if [ run_as_boot_time_test == "true" ]; then
+
+    log_info "Boot time test flag detected, running the boot time tests before launching the guest for good..."
+
+    run_test &> $LOGFILE_NAME
+
+    log_info "Tests finished."
+fi
+
+launch_vm
 
 echo "$uuid" > $guest_id_file
 
 log_info "Done. Wrote the guest vm ID $uuid to $guest_id_file"
+

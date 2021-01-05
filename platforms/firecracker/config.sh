@@ -16,6 +16,8 @@ rootfs_final_size=30G
 guest_memory=3934
 guest_vcpu=4
 
+client_ip=172.16.0.2
+host_ip=192.168.1.82
 iptables_backup=$firecracker_dir/iptables.rules.old
 tap_name=tap0
 tap_cidr=172.16.0.1/24
