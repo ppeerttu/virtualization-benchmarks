@@ -1,5 +1,9 @@
 # KVM
 
+**Note**: The steps described here are automated into scripts at [platforms/kvm](../../platforms/kvm) -directory.
+
+---
+
 This document describes the steps required to setup the KVM. Instructions sourced from [Ubuntu KVM Home](https://help.ubuntu.com/community/KVM).
 
 ## Default installation
@@ -134,7 +138,7 @@ The default KVM installation includes a virtual network bridge that new guest ma
 Clone this git repo into your host and `cd` into it. We can launch a guest Ubuntu server with the following command.
 
 ```bash
-./host/launch_guest
+./platforms/kvm/install_kvm_guest
 ```
 
 You might need to run the command as `sudo`.
