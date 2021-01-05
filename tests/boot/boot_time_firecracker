@@ -8,8 +8,21 @@ OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 export LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-firecracker-boot-time.log
 
+run_iteration() {
+    bash -c "./launch_vm --boot-time-test"
+    sleep 5
+    bash -c "./destroy_vm"
+}
+
+
+run_test() {
+    for ((i=1; i<=$ITERATIONS;i++)); do
+        run_iteration
+    done
+}
+
 pushd ../../platforms/firecracker
 
-bash -c "./launch_vm --boot-time-test"
+run_test
 
 popd
