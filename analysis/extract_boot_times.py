@@ -28,7 +28,7 @@ for f in results:
     elif 'docker' in f:
         selector = 'docker'
     elif 'firecracker' in f:
-        selector: 'firecracker'
+        selector = 'firecracker'
     
     arr = data[selector]
     result_file = open(path.join(results_dir, f), 'r')
@@ -51,3 +51,4 @@ print("Average for Docker: {:.3f} seconds".format(avg_time(data['docker'])))
 print("Average for gVisor: {:.3f} seconds".format(avg_time(data['gvisor'])))
 print("Average for KVM: {:.3f} seconds".format(avg_time(data['kvm'])))
 print("Average for metal: {:.3f} seconds".format(avg_time(data['metal'])))
+print("Average for Firecracker: {:.3f} seconds".format(avg_time(data['firecracker'])))
