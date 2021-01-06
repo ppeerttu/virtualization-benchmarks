@@ -1,7 +1,5 @@
-from typing import Dict, List
-from src.utils import get_files, get_platform_selector, read_file_per_line, read_json_file
+from src.utils import get_files, get_platform_selector, read_json_file
 from os import path
-import re
 import pandas as pd
 
 dirname = path.dirname(__file__)
@@ -13,14 +11,6 @@ jitter_file = "jitter_results.csv"
 results = [f for f in get_files(results_dir) if 'server' not in f]
 b_results = [f for f in results if 'jitter' not in f]
 j_results = [f for f in results if 'jitter' in f]
-
-data = {
-    'metal': [],
-    'kvm': [],
-    'firecracker': [],
-    'docker': [],
-    'gvisor': []
-}
 
 df = pd.DataFrame(columns=['platform', 'sent_bps', 'received_bps', 'cpu_client', 'cpu_server'])
 
