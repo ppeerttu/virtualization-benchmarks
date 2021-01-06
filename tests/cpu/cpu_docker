@@ -15,7 +15,7 @@ ITERATIONS=10
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 OUTPUT_DIR=$DIR/output
 DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
-LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}boot-time.log
+LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-docker-${GVISOR}cpu.log
 
 launch_container() {
     docker run --rm $RUNSC_ARG sysbench:latest
