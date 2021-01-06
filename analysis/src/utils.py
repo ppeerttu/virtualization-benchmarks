@@ -1,5 +1,6 @@
 from os import listdir, path
-from typing import Callable, List
+from typing import Any, Callable, List
+import json
 
 def get_files(results_dir: str, skip_files: List[str] = [".gitignore"]) -> List[str]:
     """Get result files from given `results_dir`.
@@ -54,3 +55,18 @@ def read_file_per_line(filepath: str, callback: Callable[[str], None]) -> None:
         callback(line)
         line = result_file.readline()
     result_file.close()
+
+def read_json_file(filepath: str) -> Any:
+    """Read JSON from a file.
+
+    Args:
+
+        filepath (str): Path to file
+
+    Returns:
+
+        Any: The parsed JSON
+    """
+    with open(filepath, 'r') as json_file:
+        data = json.load(json_file)
+    return data

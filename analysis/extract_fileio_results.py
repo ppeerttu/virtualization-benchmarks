@@ -12,14 +12,6 @@ write_output_file = "fileio_write_results.csv"
 
 results = get_files(results_dir)
 
-data = {
-    'metal': [],
-    'kvm': [],
-    'firecracker': [],
-    'docker': [],
-    'gvisor': []
-}
-
 def parse_results(files: List[str], type: str) -> Dict[str, List[float]]:
     data = {
         'metal': [],
@@ -57,10 +49,3 @@ df = pd.DataFrame(data=d_write)
 print(df.mean())
 
 df.to_csv(path.join(output_dir, write_output_file))
-
-# df = pd.DataFrame(data=data)
-
-# print("Averages:")
-# print(df.mean(axis=0))
-
-# df.to_csv(path.join(output_dir, output_file))
