@@ -10,12 +10,12 @@ output_file = "database_results.csv"
 
 results = get_files(results_dir)
 
-df = pd.DataFrame(columns=['platform', 'rqps', 'wqps', 'oqps', 'tqps', 'transactions', 'latency_min', 'latency_max', 'latency_avg', 'time_total'])
+df = pd.DataFrame(columns=['platform', 'read_queries', 'write_queries', 'other_queries', 'total_queries', 'transactions', 'latency_min', 'latency_max', 'latency_avg', 'time_total'])
 
-rqps = 0
-wqps = 0
-oqps = 0
-tqps = 0
+read_queries = 0
+write_queries = 0
+other_queries = 0
+total_queries = 0
 transactions = 0
 latency_min = 0
 latency_max = 0
@@ -23,11 +23,11 @@ latency_avg = 0
 time_total = 0
 
 def clear_row():
-    global stats_started, rqps, wqps, oqps, tqps, transactions, latency_min, latency_max, latency_avg, time_total
-    rqps = 0
-    wqps = 0
-    oqps = 0
-    tqps = 0
+    global stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total
+    read_queries = 0
+    write_queries = 0
+    other_queries = 0
+    total_queries = 0
     transactions = 0
     latency_min = 0
     latency_max = 0
@@ -39,31 +39,31 @@ selector = None
 i = 0
 
 def parse_line(line: str) -> None:
-    global selector, stats_started, rqps, wqps, oqps, tqps, transactions, latency_min, latency_max, latency_avg, time_total, i, df
+    global selector, stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total, i, df
     if not stats_started:
         if line.startswith("SQL statistics:"):
             stats_started = True
     elif line.startswith("Threads fairness:"):
-        df.loc[i] = [selector, rqps, wqps, oqps, tqps, transactions, latency_min, latency_max, latency_avg, time_total]
+        df.loc[i] = [selector, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total]
         stats_started = False
         clear_row()
         i += 1
     else:
         m = re.search(' +{}: +([0-9\.]+)'.format("read"), line)
         if m:
-            rqps = float(m.group(1))
+            read_queries = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("write"), line)
         if m:
-            wqps = float(m.group(1))
+            write_queries = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("other"), line)
         if m:
-            oqps = float(m.group(1))
+            other_queries = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("total"), line)
         if m:
-            tqps = float(m.group(1))
+            total_queries = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("transactions"), line)
         if m:
-            transactions = float(m.group(1))
+            transactions = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("total time"), line)
         if m:
             time_total = float(m.group(1))
