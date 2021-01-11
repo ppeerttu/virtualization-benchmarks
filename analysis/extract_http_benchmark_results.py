@@ -73,4 +73,4 @@ for f in results:
     print("Platform: {}".format(selector))
     read_file_per_line(path.join(results_dir, f), parse_line)
 
-df.to_csv(path.join(output_dir, output_file))
+df.to_csv(path.join(output_dir, output_file), index=False)

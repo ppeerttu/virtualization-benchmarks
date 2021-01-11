@@ -41,4 +41,4 @@ print("Averages:")
 print(df.mean(axis=0))
 
 
-df.to_csv(path.join(output_dir, output_file))
+df.to_csv(path.join(output_dir, output_file), index=False)

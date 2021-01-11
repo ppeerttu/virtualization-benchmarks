@@ -27,7 +27,7 @@ for offset, f in enumerate(b_results):
         # Store from the platform perspecvive, hence column "sent_bps" means bits sent by the server, not client
         df.loc[index] = [selector, received_bps, sent_bps, cpu_local, cpu_remote]
 
-df.to_csv(path.join(output_dir, bandwidth_file))
+df.to_csv(path.join(output_dir, bandwidth_file), index=False)
 
 df = pd.DataFrame(columns=['platform', 'jitter_ms', 'bps', 'lost_percent', 'cpu_client', 'cpu_server'])
 
@@ -45,4 +45,4 @@ for offset, f in enumerate(j_results):
         # Store from the platform perspecvive, hence column "sent_bps" means bits sent by the server, not client
         df.loc[index] = [selector, jitter_ms, bps, lost_percent, cpu_local, cpu_remote]
 
-df.to_csv(path.join(output_dir, jitter_file))
+df.to_csv(path.join(output_dir, jitter_file), index=False)

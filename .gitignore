@@ -5,3 +5,4 @@ ubuntu-rootfs
 *.new
 *.old
 .DS_Store
+.Rproj.user

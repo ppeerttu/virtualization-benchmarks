@@ -41,11 +41,11 @@ df = pd.DataFrame(data=d_read)
 
 print(df.mean())
 
-df.to_csv(path.join(output_dir, read_output_file))
+df.to_csv(path.join(output_dir, read_output_file), index=False)
 
 d_write = parse_results(results, "written")
 df = pd.DataFrame(data=d_write)
 
 print(df.mean())
 
-df.to_csv(path.join(output_dir, write_output_file))
+df.to_csv(path.join(output_dir, write_output_file), index=False)
