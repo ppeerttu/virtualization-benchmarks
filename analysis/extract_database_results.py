@@ -10,7 +10,7 @@ output_file = "database_results.csv"
 
 results = get_files(results_dir)
 
-df = pd.DataFrame(columns=['platform', 'read_queries', 'write_queries', 'other_queries', 'total_queries', 'transactions', 'latency_min', 'latency_max', 'latency_avg', 'time_total'])
+df = pd.DataFrame(columns=['platform', 'concurrency', 'read_queries', 'write_queries', 'other_queries', 'total_queries', 'transactions', 'latency_min', 'latency_max', 'latency_avg', 'time_total'])
 
 read_queries = 0
 write_queries = 0
@@ -21,9 +21,10 @@ latency_min = 0
 latency_max = 0
 latency_avg = 0
 time_total = 0
+concurrency = 0
 
 def clear_row():
-    global stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total
+    global stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total, concurrency
     read_queries = 0
     write_queries = 0
     other_queries = 0
@@ -33,22 +34,26 @@ def clear_row():
     latency_max = 0
     latency_avg = 0
     time_total = 0
+    concurrency = 0
 
 stats_started = False
 selector = None
 i = 0
 
 def parse_line(line: str) -> None:
-    global selector, stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total, i, df
+    global selector, stats_started, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total, i, df, concurrency
     if not stats_started:
-        if line.startswith("SQL statistics:"):
+        if line.startswith("Running the test with following options:"):
             stats_started = True
     elif line.startswith("Threads fairness:"):
-        df.loc[i] = [selector, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total]
+        df.loc[i] = [selector, concurrency, read_queries, write_queries, other_queries, total_queries, transactions, latency_min, latency_max, latency_avg, time_total]
         stats_started = False
         clear_row()
         i += 1
     else:
+        m = re.search('{}: +([0-9\.]+)'.format("Number of threads"), line)
+        if m:
+            concurrency = int(m.group(1))
         m = re.search(' +{}: +([0-9\.]+)'.format("read"), line)
         if m:
             read_queries = int(m.group(1))
