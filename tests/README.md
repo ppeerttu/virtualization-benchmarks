@@ -84,8 +84,6 @@ The purpose of this test is to measure the performance of the platform under gen
 
 ### Database
 
-TODO: Describe SQL operations, located at https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_common.lua
-
 The purpose of this test is to benchmark the platform performance under commonly used application stress. The database test contains a series of OLTP-like queries with different concurrency levels against a MySQL instance. From the set of available test suites, we run [oltp_read_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_only.lua), [oltp_write_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_write_only.lua) and [oltp_read_write](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_write.lua).
 
 
@@ -113,6 +111,7 @@ The purpose of this test is to benchmark the platform performance under commonly
 | pad | CHAR(60) | NOT NULL (default '') | |
 
 Transactions contain:
+
  * **read_only**
    * `SELECT c FROM sbtest WHERE id BETWEEN ? AND ?`, 1 per transaction
    * `SELECT SUM(k) FROM sbtest WHERE id BETWEEN ? AND ?`, 1 per transaction
@@ -154,7 +153,7 @@ The purpose of this test is to measure the network bandwidth and jitter on each 
 
 **Measurement feature**: Network throughput and jitter
 
-**Feature metric**: Received bits/s, sent bits/s, jitter ms
+**Feature metric**: Received bits/s (TCP and UDP), sent bits/s (TCP and UDP), CPU usage % (TCP and UDP), jitter ms (UDP)
 
 **Tools**: [iperf3][iperf-site]
 
