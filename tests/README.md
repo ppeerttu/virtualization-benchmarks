@@ -70,7 +70,7 @@ The purpose of this test is to measure the performance of the platform under gen
 
 **Measurement feature**: CPU performance
 
-**Feature metric**: TBD
+**Feature metric**: Events per second. Single event means calculating the count of prime numbers between 3 and 10000.
 
 **Tools**: [sysbench][sysbench-site]
 
@@ -86,8 +86,8 @@ The purpose of this test is to measure the performance of the platform under gen
 
 TODO: Describe SQL operations, located at https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_common.lua
 
-
 The purpose of this test is to benchmark the platform performance under commonly used application stress. The database test contains a series of OLTP-like queries with different concurrency levels against a MySQL instance. From the set of available test suites, we run [oltp_read_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_only.lua), [oltp_write_only](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_write_only.lua) and [oltp_read_write](https://github.com/akopytov/sysbench/blob/master/src/lua/oltp_read_write.lua).
+
 
 **Measurement feature**: Generic
 
@@ -102,6 +102,31 @@ The purpose of this test is to benchmark the platform performance under commonly
 | Firecracker   | Similarly as above, except the guest VM is not visible to the local network. We use custom port forwarding from bare metal host. |   |  |
 | Docker        | MySQL server running in container on the metal host. The server is accessed from another machine by using Docker port forwarding on the bare metal host. | Same as above |   |
 | gVisor        | Same as above. | Same as above |   |
+
+**Table structure**
+
+| Column  | Type  | Constraints  | Description |
+|--|--|--|--|
+| id | Integer  | PK  | |
+| k | Integer | NOT NULL (default '0') | |
+| c | CHAR(120) | NOT NULL (default '') | |
+| pad | CHAR(60) | NOT NULL (default '') | |
+
+Transactions contain:
+ * **read_only**
+   * `SELECT c FROM sbtest WHERE id BETWEEN ? AND ?`, 1 per transaction
+   * `SELECT SUM(k) FROM sbtest WHERE id BETWEEN ? AND ?`, 1 per transaction
+   * `SELECT c FROM sbtest WHERE id BETWEEN ? AND ? ORDER BY c`, 1 per transaction
+   * `SELECT DISTINCT c FROM sbtest WHERE id BETWEEN ? and ? ORDER BY c`, 1 per transaction
+   * `SELECT c FROM sbtest WHERE id=?`, 10 times per transaction
+ * **write_only**
+   * `UPDATE sbtest SET k=k+1 WHERE id=?`, 1 per transaction
+   * `UPDATE sbtest SET c=? WHERE id=?`, 1 per transaction
+   * `DELETE FROM sbtest WHERE id=?`, 1 per transaction
+   * `INSERT INTO sbtest (id, k, c, pad) VALUES (?, ?, ?, ?)`, 1 per transaction
+* **read_write**
+  * First **read_only**, then **write_only**, all within same transaction
+
 
 ### File I/O
 
