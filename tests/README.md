@@ -35,9 +35,9 @@ The tests are run in the following structure.
 | 1 | Boot  | -  |  - | 10 |
 | 2. | CPU  | -  | -  | 10 |
 | 3. | File I/O  | -  | -  | 10 |
-| 4. | Database | - | 10, 30, 60, 90, 120, 150, 180, 200 | 2 (each concurrency level) |
+| 4. | Database | - | 10, 20, 30, 40, 50, 60, 70 | 10 (each concurrency level) |
 | 5. | Network | - | - | 10 |
-| 6. | Case app - HTTP | - | 10, 30, 60, 90, 120, 150, 180, 200 | 2 (each concurrency level) |
+| 6. | Case app - HTTP | - | 10, 30, 60, 90, 120, 150, 180, 200 | 10 (each concurrency level) |
 | 7. | Case app - pipeline turonver | - | - | 10 |
 
 Since each test set will be run for all platforms, total count of tests per platform will be 82 and thus the total count of tests will be 410.
