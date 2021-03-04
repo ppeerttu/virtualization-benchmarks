@@ -22,7 +22,7 @@ gid=$(id -g)
 
 # For the boot time test
 ping_vm() {
-    until ping -c1 $client_ip >/dev/null 2>&1; do :; done
+    until timeout 0.1 ping -c1 $client_ip >/dev/null 2>&1; do :; done
 }
 
 launch_vm() {

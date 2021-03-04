@@ -10,7 +10,7 @@ DATETIME=$(date +%Y-%m-%dT%H:%M:%S%z)
 LOGFILE_NAME=$OUTPUT_DIR/$DATETIME-metal-boot-time.log
 
 ping_host() {
-    until ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
+    until timeout 0.1 ping -c1 $HOST_NAME >/dev/null 2>&1; do :; done
 }
 
 wait_until_shutdown_input() {

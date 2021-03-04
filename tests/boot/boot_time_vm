@@ -16,7 +16,7 @@ destroy_vm() {
 }
 
 ping_vm() {
-    until ping -c1 $VM_NAME >/dev/null 2>&1; do :; done
+    until timeout 0.1 ping -c1 $VM_NAME >/dev/null 2>&1; do :; done
 }
 
 run_iteration() {
